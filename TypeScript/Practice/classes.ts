@@ -200,6 +200,10 @@ c1.displayArea()
 
 
 // ------------------------- Basic Generics------------------------------------------------------------------------------------------------------
+// Generics allow creating 'type variables' which can be used to create classes, functions & type aliases that don't need to explicitly define the types that they use.
+// Generics makes it easier to write reusable code.
+
+
 function createPair<T>(v1: T): T {
     return v1
 }
@@ -214,6 +218,17 @@ function createPairs<S, T>(v1: S, v2: T): [S, T] {
 }
 console.log(createPairs<string, number>('hello', 42)); // ['hello', 42]
 
+
+//------ function generic ------
+
+function generic<T, S>(data1: T, data2: S): T & S {
+    return {...data1, ...data2}
+}
+
+const g = generic({ name: "purvi" }, { id: 1 })
+console.log(g);
+console.log(g.id);
+console.log(g.name);
 
 //--------- Generics Classes-----
 
@@ -259,13 +274,20 @@ console.log("hhhhh",gen.abc(10));
 console.log("iiiii",gen.abcde());
 
 
-//------ function generic ------
+class Gen<S,N> {
+    constructor(protected name:S) {}
+    private sums:N | undefined;
 
-function generic<T, S>(data1: T, data2: S): T & S {
-    return {...data1, ...data2}
+    public numbers(num:N):N{
+        return this.sums= num 
+    }
+    public concat ():void{
+        console.log(`${this.name} add this value ${this.sums}`);
+    }
+
 }
 
-const g = generic({ name: "purvi" }, { id: 1 })
-console.log(g);
-console.log(g.id);
-console.log(g.name);
+const gn = new Gen <string,number>("meera")
+gn.numbers(14)
+gn.concat()
+

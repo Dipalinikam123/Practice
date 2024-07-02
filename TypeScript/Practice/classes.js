@@ -176,6 +176,8 @@ var c1 = new Circle2(5);
 console.log(c1.calculateArea());
 c1.displayArea();
 // ------------------------- Basic Generics------------------------------------------------------------------------------------------------------
+// Generics allow creating 'type variables' which can be used to create classes, functions & type aliases that don't need to explicitly define the types that they use.
+// Generics makes it easier to write reusable code.
 function createPair(v1) {
     return v1;
 }
@@ -187,6 +189,14 @@ function createPairs(v1, v2) {
     return [v1, v2];
 }
 console.log(createPairs('hello', 42)); // ['hello', 42]
+//------ function generic ------
+function generic(data1, data2) {
+    return __assign(__assign({}, data1), data2);
+}
+var g = generic({ name: "purvi" }, { id: 1 });
+console.log(g);
+console.log(g.id);
+console.log(g.name);
 //--------- Generics Classes-----
 var NamedValue = /** @class */ (function () {
     function NamedValue(name) {
@@ -222,11 +232,18 @@ var Generic3 = /** @class */ (function () {
 var gen = new Generic3("myNumber");
 console.log("hhhhh", gen.abc(10));
 console.log("iiiii", gen.abcde());
-//------ function generic ------
-function generic(data1, data2) {
-    return __assign(__assign({}, data1), data2);
-}
-var g = generic({ name: "purvi" }, { id: 1 });
-console.log(g);
-console.log(g.id);
-console.log(g.name);
+var Gen = /** @class */ (function () {
+    function Gen(name) {
+        this.name = name;
+    }
+    Gen.prototype.numbers = function (num) {
+        return this.sums = num;
+    };
+    Gen.prototype.concat = function () {
+        console.log("".concat(this.name, " add this value ").concat(this.sums));
+    };
+    return Gen;
+}());
+var gn = new Gen("meera");
+gn.numbers(14);
+gn.concat();
