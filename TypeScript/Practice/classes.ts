@@ -31,8 +31,8 @@ class Person {
     names: string | undefined;
 }
 
-const person = new Person();
-person.names = "Jane";
+const persona = new Person();
+persona.names = "Jane";
 
 //   -------------------------------
 
