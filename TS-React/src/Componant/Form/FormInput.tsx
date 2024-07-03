@@ -4,24 +4,25 @@ interface FormCheck {
   fname: string;
   lname: string;
   email: string;
+  password: string | number;
   number: number | string;
 }
 
-interface FormInput {
+interface FormInputProps {
   user: FormCheck;
   submitHandler: (e: React.ChangeEvent<HTMLFormElement>) => void;
   updateHandler: () => void;
-  changeHandeler: (
+  changeHandler: (
     e: React.ChangeEvent<HTMLInputElement>,
     key: string | number
   ) => void;
   flag: boolean;
 }
 
-const FormInput: React.FC<FormInput> = ({
+const FormInput: React.FC<FormInputProps> = ({
   user,
   submitHandler,
-  changeHandeler,
+  changeHandler,
   flag,
   updateHandler,
 }) => {
@@ -34,7 +35,7 @@ const FormInput: React.FC<FormInput> = ({
           type="text"
           placeholder="Enter Your First Name"
           value={user?.fname}
-          onChange={(e) => changeHandeler(e, "fname")}
+          onChange={(e) => changeHandler(e, "fname")}
           required
         />
         <input
@@ -43,7 +44,7 @@ const FormInput: React.FC<FormInput> = ({
           placeholder="Enter Your Last Name"
           value={user?.lname}
           required
-          onChange={(e) => changeHandeler(e, "lname")}
+          onChange={(e) => changeHandler(e, "lname")}
         />
         <input
           className="p-1 rounded-2 border"
@@ -51,7 +52,15 @@ const FormInput: React.FC<FormInput> = ({
           placeholder="Enter Your Email"
           value={user?.email}
           required
-          onChange={(e) => changeHandeler(e, "email")}
+          onChange={(e) => changeHandler(e, "email")}
+        />
+        <input
+          className="p-1 rounded-2 border"
+          type="password"
+          placeholder="Enter Your Password"
+          value={user?.password}
+          required
+          onChange={(e) => changeHandler(e, "password")}
         />
         <input
           className="p-1 rounded-2 border"
@@ -59,7 +68,7 @@ const FormInput: React.FC<FormInput> = ({
           placeholder="Enter Your Mobile Number"
           value={user?.number}
           required
-          onChange={(e) => changeHandeler(e, "number")}
+          onChange={(e) => changeHandler(e, "number")}
         />
         <div className="m-auto">
           {flag ? (
