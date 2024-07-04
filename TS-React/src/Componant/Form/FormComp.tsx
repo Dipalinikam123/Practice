@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import FormTable from "./FormTable";
 import FormInput from "./FormInput";
 
-interface FormCheck {
+export interface FormCheck {
   fname: string;
   lname: string;
   email: string;
@@ -57,11 +57,11 @@ const FormComp: React.FC = () => {
     setFlag(false);
   };
   const updateHandler = (): void => {
-    if (index !== null ) {
+    if (index !== null) {
       const updatedList = [...userData];
-      updatedList[index] = user;  //1
+      updatedList[index] = user; //1
       // updatedList.splice(index, 1, user); //2
-   //------------------------------------------------------------
+      //------------------------------------------------------------
       // const updatedList= userData.map((e,i)=> i ===index ? user : e ) //3
       setUserData(updatedList);
       localStorage.setItem("userdata", JSON.stringify(updatedList));
@@ -69,7 +69,6 @@ const FormComp: React.FC = () => {
       setIndex(null);
       setFlag(true);
     }
-    
   };
 
   console.log("user", user);
@@ -78,9 +77,14 @@ const FormComp: React.FC = () => {
     <div className="d-flex flex-column w-100">
       <div className="border border-1 w-25 p-4 m-auto mb-4">
         <h1>Form </h1>
-        <FormInput user={user} flag={flag} changeHandler={changeHandler} submitHandler={submitHandler} updateHandler={updateHandler}/>
+        <FormInput
+          user={user}
+          flag={flag}
+          changeHandler={changeHandler}
+          submitHandler={submitHandler}
+          updateHandler={updateHandler}
+        />
       </div>
-    
 
       <FormTable
         userData={userData}

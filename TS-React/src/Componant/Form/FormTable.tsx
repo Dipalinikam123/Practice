@@ -1,13 +1,8 @@
 import { Pencil, Trash } from "lucide-react";
 import React from "react";
+import { FormCheck } from "./FormComp";
 
-interface FormCheck {
-  fname: string;
-  lname: string;
-  email: string;
-  password: string | number;
-  number: number | string;
-}
+
 
 interface FormTableProps {
   userData: FormCheck[];

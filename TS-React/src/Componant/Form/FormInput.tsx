@@ -1,12 +1,7 @@
 import React from "react";
+import { FormCheck } from "./FormComp";
 
-interface FormCheck {
-  fname: string;
-  lname: string;
-  email: string;
-  password: string | number;
-  number: number | string;
-}
+
 
 interface FormInputProps {
   user: FormCheck;
