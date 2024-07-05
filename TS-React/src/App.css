@@ -1,4 +1,4 @@
-/* table {
+ /* table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
   }
@@ -10,5 +10,12 @@
   
   tr:nth-child(even) {
     background-color: #ece7e7;
-  }  */
- 
+  }  
+  */
+  
+
+  .row>* {
+    display: flex;
+    justify-content: center;
+    
+}
