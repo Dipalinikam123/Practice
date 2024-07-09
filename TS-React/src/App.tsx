@@ -12,11 +12,12 @@ import CounterContex from "./Componant/UseContex/CounterContex";
 import { ToDo } from "./Componant/TODO/ToDo";
 import UseContextState from "./Componant/UseContex/ContexPractice/UseContextState";
 import { DisplayPage } from "./Componant/UseContex/ContexPractice/DisplayPage";
+// import {UseReducerComp} from "./Componant/UseReducerComp";
+import { ReducerCom } from './Componant/UseReducerComp';
 
 const App: React.FC = () => {
   return (
-    <div
-      className="d-flex flex-column align-items-center mt-5" >
+    <div className="d-flex flex-column align-items-center mt-5">
       {/* <Counter /> */}
       {/* <ButtonFun text="Click me" onClick={()=>alert("hello")}/> */}
       {/* <ApiCom/> */}
@@ -27,12 +28,13 @@ const App: React.FC = () => {
       </Contex> */}
 
       {/* <ToDo/> */}
-      <UseContextState>
 
-       
-        <DisplayPage/>
-        </UseContextState>
-      
+      {/* <UseContextState>
+        <DisplayPage />
+      </UseContextState> */}
+
+      {/* <UseReducerComp/> */}
+      <ReducerCom/>
     </div>
   );
 };

@@ -1,5 +1,4 @@
 import axios from "axios";
-import { url } from "inspector";
 import React, { ReactNode, createContext, useEffect, useState } from "react";
 
 export interface Product {
