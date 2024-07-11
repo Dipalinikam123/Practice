@@ -26,11 +26,9 @@ function App() {
 
 
       {/* -----------------------HOC------------------------------- */}
-
-      {/* <Componant1/>
-          <Componant2/> */}
-
-
+{/* 
+      <Componant1 name="pjhdf"/>
+      <Componant2 /> */}
 
       <ToastContainer />
     </>
