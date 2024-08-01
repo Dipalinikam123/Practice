@@ -17,7 +17,7 @@ function Counter() {
 
   return (
     <>
-    <div>Count: {count}</div>
+    <div>Count:{count}</div>
     <input type='text' value={input} placeholder='Enter Number..!' onChange={(e)=>inputHandeler(e)}/>
     <button onClick={increment}>Increment</button>
     <button onClick={clearCount}>Clear</button>
