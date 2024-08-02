@@ -1,8 +1,9 @@
 import React from 'react';
-import { fireEvent, getAllByRole, render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import App from './App';
 import printHandler from './Practice/helper';
 import FormComponant from './Practice/FormComponant';
+import MultipleElement from './Practice/MultipleElement';
 
 
 
@@ -230,7 +231,7 @@ import FormComponant from './Practice/FormComponant';
 
 
 test('Multiple same elememt', () => {
-  render(<App/>)
+  render(<MultipleElement/>)
 
   // getByRole
   // const btn1= screen.getByRole("button",{name:"click Me 1"})
@@ -242,8 +243,20 @@ test('Multiple same elememt', () => {
 
   // expect(screen.getByRole("dummy")).toBeInTheDocument()
 
-  // getAllByRole
+  // getAllByRole 
+  //Note--- getAllByRole Query return an array..
 
-  // expect(screen.get)
+  // const btns= screen.getAllByRole('button')
+
+  // for (let i = 0; i < btns.length-1; i++) {
+  //   expect(btns[i]).toBeInTheDocument()
+  // }
+
+
+  //   const options =screen.getAllByRole('option')
+
+  //   for (let a = 0; a < options.length-1; a++) {
+  //     expect(options[a]).toBeInTheDocument()
+  //   }
 });
 

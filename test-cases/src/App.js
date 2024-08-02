@@ -6,10 +6,12 @@ import ClickEvent from '../../test-cases/src/Practice/ClickEvent';
 import FormComponant from '../../test-cases/src/Practice/FormComponant';
 import FunctionalMethod from '../../test-cases/src/Practice/FunctionalMethod';
 import MultipleElement from './Practice/MultipleElement';
+import RegisterForm from './Practice/UI/RegisterForm';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className="">
       {/* <p>First React Test Case</p>
       <p>Purvi</p>
       <img title="React Image" src={logo} className="App-logo" alt="logo" />
@@ -19,7 +21,9 @@ function App() {
       {/* <ClickEvent/> */}
       {/* <FormComponant/> */}
       {/* <FunctionalMethod/> */}
-      <MultipleElement/>
+      {/* <MultipleElement/> */}
+      <RegisterForm/>
+     
     </div>
   );
 }
