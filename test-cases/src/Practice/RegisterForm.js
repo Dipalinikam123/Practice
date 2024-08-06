@@ -25,7 +25,7 @@ export default function RegisterForm() {
 
     console.log("userDetails====", userDetails);
     return (
-        <>
+        <div data-testid="myRootDiv">
             <h1 className='text-center'>RegisterForm</h1>
             <form className='container'>
                 <div className='row justify-content-center border p-2'>
@@ -88,6 +88,6 @@ export default function RegisterForm() {
                     }
                 </tbody>
             </table>
-        </>
+        </div>
     );
 }

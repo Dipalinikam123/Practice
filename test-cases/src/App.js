@@ -6,12 +6,17 @@ import ClickEvent from '../../test-cases/src/Practice/ClickEvent';
 import FormComponant from '../../test-cases/src/Practice/FormComponant';
 import FunctionalMethod from '../../test-cases/src/Practice/FunctionalMethod';
 import MultipleElement from './Practice/MultipleElement';
-import RegisterForm from './Practice/UI/RegisterForm';
+import RegisterForm from './Practice/RegisterForm';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CommentBox from './Practice/CommentBox/CommentBox';
+import CommentList from './Practice/CommentBox/CommentList';
+import { useState } from 'react';
 
 function App() {
+
+  const [comments,setComments]=useState([])
   return (
-    <div className="">
+    <div className="w-50 m-auto border p-3 mt-5">
       {/* <p>First React Test Case</p>
       <p>Purvi</p>
       <img title="React Image" src={logo} className="App-logo" alt="logo" />
@@ -22,7 +27,9 @@ function App() {
       {/* <FormComponant/> */}
       {/* <FunctionalMethod/> */}
       {/* <MultipleElement/> */}
-      <RegisterForm/>
+      {/* <RegisterForm/> */}
+      <CommentBox setComments={setComments}/>
+      <CommentList allComments={comments}/>
      
     </div>
   );
