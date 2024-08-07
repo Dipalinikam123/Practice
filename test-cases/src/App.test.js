@@ -1,13 +1,16 @@
 import React from 'react';
-import { fireEvent, getAllByRole, getByText, logRoles, render, screen } from '@testing-library/react';
+import { fireEvent, logRoles, render, screen } from '@testing-library/react';
 import App from './App';
 import printHandler from './Practice/helper';
 import FormComponant from './Practice/FormComponant';
-import MultipleElement from './Practice/MultipleElement';
+
 import RegisterForm from './Practice/RegisterForm';
 import CommentBox from './Practice/CommentBox/CommentBox';
 import userEvent from "@testing-library/user-event"
 import CommentList from './Practice/CommentBox/CommentList';
+import ClickEvent from './Practice/ClickEvent';
+import Counter from './Practice/Counter';
+import { GetAllByPlaceholderName, GetAllByRole, GetAllLableByText, GetByPlaceholderName, GetByRole, GetByTestId, GetByText, GetLableByText, MultipleElement } from './Practice/RTL/RTLQueried';
 
 
 // --------simple componant testing ---------------------------
@@ -121,7 +124,7 @@ import CommentList from './Practice/CommentBox/CommentList';
 //     expect(checkInput).toBeInTheDocument()
 //     expect(checkPlaceholder).toBeInTheDocument()
 //   });
-
+// })
 
 // ---------------------- snap shot -----------------------------
 
@@ -134,40 +137,100 @@ import CommentList from './Practice/CommentBox/CommentList';
 // -------------- describe , only & skip -----------------------------
 
 // describe.only('group testing', () => {
-//   test("11 counter testing", () => {
+//   test("UI counter testing", () => {
 //     render(<Counter />)
-//     let checkInput = screen.getByRole("textbox")
-//     let checkPlaceholder = screen.getByPlaceholderText('Enter Number..!')
-//     expect(checkInput).toBeInTheDocument()
-//     expect(checkPlaceholder).toBeInTheDocument()
+//     logRoles(screen.getByTestId('count-test'))
+//     const countDisplay = screen.getByTestId('count-test');
+//     const checkInput = screen.getByRole("spinbutton")
+//     const incBtn= screen.getByRole("button",{name:"Increment"})
+//     const clsBtn=screen.getByRole("button",{name:"Clear"})
+
+//     expect(checkInput).toBeInTheDocument();
+//     expect(countDisplay).toBeInTheDocument();
+//     expect(incBtn).toBeInTheDocument();
+//     expect(clsBtn).toBeInTheDocument();
 //   });
 
+//   test('increment Button', () => {
+//     render(<Counter />);
+//     const checkInput = screen.getByRole('spinbutton');
+//     const incBtn = screen.getByRole('button', { name: 'Increment' });
 
-// test("counter testing", () => {
-//   render(<Counter />)
+//     // Initially, the count should be 0
+//     const countDisplay = screen.getByTestId('count-test');
 
-//   let checkInput = screen.getByRole("textbox")
-//   let checkPlaceholder = screen.getByPlaceholderText('Enter Number..!')
-//   // let checkIncBtn= screen.getByText(/Increment/i);
-//   let checkClsBtn= screen.getByText(/Clear/i);
-//   let checkText= screen.getByText(/count:0/i);
+//     expect(countDisplay).toHaveTextContent('Count:0');
+//     // Change the input value to '5'
+//     fireEvent.change(checkInput, { target: { value:'5'} });
+//     expect(checkInput).toHaveValue(5)
 
-//   expect(checkText).toBeInTheDocument();
-//   expect(checkInput).toBeInTheDocument();
-//   expect(checkPlaceholder).toBeInTheDocument();
-//   expect(checkInput).toHaveAttribute("type", "text");
 
-//   fireEvent.change(checkInput,{target:{value:'0'}});
-//   expect(checkInput.value).toBe('0');
+//     // Verify that the initial count text is no longer present
 
-//   fireEvent.click(checkClsBtn);
-//   // expect(screen.getByText(/count:0/i)).toBeInTheDocument();
+//     // Click the Increment button
+//     fireEvent.click(incBtn);
 
-//   fireEvent.click(checkClsBtn)
-//   expect(checkText).toBeInTheDocument()
+//     // Verify that the count has updated to 5
+//     // screen.debug()
+//     expect(screen.getByText(/Count:5/)).toBeInTheDocument();
+//   });
 
+//   test('Clear Button', () => {
+//     render(<Counter />);
+//     const inputElement = screen.getByRole('spinbutton');
+//     const incBtn = screen.getByRole('button', { name: 'Increment' });
+//     const clsBtn = screen.getByRole('button', { name: 'Clear' });
+//     const countDisplay = screen.getByTestId('count-test');
+
+//    // Set input value to '10'
+//    fireEvent.change(inputElement, { target: { value: '10' } });
+//    expect(inputElement).toHaveValue(10)
+
+
+//    // Click Increment button
+//    fireEvent.click(incBtn);
+
+//    // Verify that the count is now 10
+//    expect(countDisplay).toHaveTextContent('Count:10');
+
+//    // Click Clear button
+//    fireEvent.click(clsBtn);
+
+//    // Verify that the count is reset to 0
+//   //  screen.debug()
+
+//    expect(countDisplay).toHaveTextContent('Count:0');
+//  });
+
+// // test("counter testing", () => {
+// //   render(<Counter />)
+
+// //   let checkInput = screen.getByRole("textbox")
+// //   let checkPlaceholder = screen.getByPlaceholderText('Enter Number..!')
+// //   let checkIncBtn= screen.getByText(/Increment/i);
+// //   let checkClsBtn= screen.getByText(/Clear/i);
+// //   let checkText= screen.getByText(/count:0/i);
+
+// //   expect(checkText).toBeInTheDocument();
+// //   expect(checkInput).toBeInTheDocument();
+// //   expect(checkPlaceholder).toBeInTheDocument();
+// //   expect(checkIncBtn).toBeInTheDocument()
+// //   expect(checkInput).toHaveAttribute("type", "text");
+
+// //   fireEvent.change(checkInput,{target:{value:'1'}});
+// //   expect(checkInput.value).toBe('1');
+
+// //   fireEvent.click(checkIncBtn)
+// //   expect(screen.getByText).toEqual('1')
+
+// //   fireEvent.click(checkClsBtn);
+// //   expect(screen.getByText(/count:0/i)).toBeInTheDocument();
+
+// //   // fireEvent.click(checkClsBtn)
+// //   // expect(checkText).toBeInTheDocument()
+
+// // })
 // })
-
 
 // ==============================ClassComp===================================================
 // test("class componant",()=>{
@@ -335,68 +398,68 @@ import CommentList from './Practice/CommentBox/CommentList';
 
 // =======================CommentBox====================================
 
-test('Initial  Comment box testing', () => {
-  render(<CommentBox />)
-  logRoles(screen.getByTestId("commentDiv"))
-  const inputField = screen.getByRole("textbox"); // access by role
-  expect(inputField).toBeInTheDocument()
-  const checkBox = screen.getByLabelText("I agree to terms and condition") //acces by lable
-  expect(checkBox).toBeInTheDocument()
-  const commetBtn = screen.getByRole("button", { name: 'Comment' }) // acees by role and name if multiple elements are same
-  expect(commetBtn).toBeDisabled()
-});
+// test('Initial  Comment box testing', () => {
+//   render(<CommentBox />)
+//   logRoles(screen.getByTestId("commentDiv"))
+//   const inputField = screen.getByRole("textbox"); // access by role
+//   expect(inputField).toBeInTheDocument()
+//   const checkBox = screen.getByLabelText("I agree to terms and condition") //acces by lable
+//   expect(checkBox).toBeInTheDocument()
+//   const commetBtn = screen.getByRole("button", { name: 'Comment' }) // acees by role and name if multiple elements are same
+//   expect(commetBtn).toBeDisabled()
+// });
 
-test('Enable comment button on type and checked', async () => {
-  render(<CommentBox />)
-  const commentInput = screen.getByPlaceholderText("Type comment here") // access by Placeholder
-  const checkBox = screen.getByLabelText("I agree to terms and condition")
-  const commetBtn = screen.getByRole("button", { name: 'Comment' })
-
-
-
-  fireEvent.change(commentInput, {target:{value:"Anything"}})
-  fireEvent.click(checkBox)
-  expect(commetBtn).toBeEnabled()
-
-  fireEvent.click(checkBox)
-  expect(commetBtn).toBeDisabled()
-
-  // we can use user event library also but with that need to use async await
-  // await userEvent.type(commentInput, "Anything")
-
-  // await userEvent.click(checkBox)
-  // expect(commetBtn).toBeEnabled()
-
-  // await userEvent.click(checkBox)
-  // expect(commetBtn).toBeDisabled()
+// test('Enable comment button on type and checked', async () => {
+//   render(<CommentBox />)
+//   const commentInput = screen.getByPlaceholderText("Type comment here") // access by Placeholder
+//   const checkBox = screen.getByLabelText("I agree to terms and condition")
+//   const commetBtn = screen.getByRole("button", { name: 'Comment' })
 
 
-});
 
-test('No Comment Testing ', () => {
-   render(<CommentList allComments={[]}/>)
+//   fireEvent.change(commentInput, {target:{value:"Anything"}})
+//   fireEvent.click(checkBox)
+//   expect(commetBtn).toBeEnabled()
 
-  logRoles(screen.getByTestId("commentListDiv"))
+//   fireEvent.click(checkBox)
+//   expect(commetBtn).toBeDisabled()
 
-   const h2Elements= screen.getByText('No Comments')
-   expect(h2Elements).toBeInTheDocument()
-});
+//   // we can use user event library also but with that need to use async await
+//   // await userEvent.type(commentInput, "Anything")
 
-test('Comments list testing', () => {
-  const commentObj=[
-    {id:1, text:"Comment 1"},
-    {id:2, text:"Comment 2"},
-  ]
- render(<CommentList allComments={commentObj}/>)
+//   // await userEvent.click(checkBox)
+//   // expect(commetBtn).toBeEnabled()
+
+//   // await userEvent.click(checkBox)
+//   // expect(commetBtn).toBeDisabled()
 
 
-  const h2Elements=screen.queryByText('No Comments')
-  expect(h2Elements).not.toBeInTheDocument()
+// });
 
-  const commentList=screen.getAllByRole("listitem")
-  expect(commentList.length).toBe(commentObj.length)
+// test('No Comment Testing ', () => {
+//    render(<CommentList allComments={[]}/>)
 
-});
+//   logRoles(screen.getByTestId("commentListDiv"))
+
+//    const h2Elements= screen.getByText('No Comments')
+//    expect(h2Elements).toBeInTheDocument()
+// });
+
+// test('Comments list testing', () => {
+//   const commentObj=[
+//     {id:1, text:"Comment 1"},
+//     {id:2, text:"Comment 2"},
+//   ]
+//  render(<CommentList allComments={commentObj}/>)
+
+
+//   const h2Elements=screen.queryByText('No Comments')
+//   expect(h2Elements).not.toBeInTheDocument()
+
+//   const commentList=screen.getAllByRole("listitem")
+//   expect(commentList.length).toBe(commentObj.length)
+
+// });
 
 // test('comment submit testing', async () => {
 //    render(<App/>)
@@ -407,28 +470,166 @@ test('Comments list testing', () => {
 //    await userEvent.type(commentInput,"hello")
 //    await userEvent.click(checkBox)
 //    await userEvent.click(commetBtn)
- 
 
-//   //  const listitems=screen.getByText("hello")
-//   //  expect(listitems).toBeInTheDocument()
+
+//    const listitems=screen.getByText("hello")
+//    expect(listitems).toBeInTheDocument()
 
 // });
 
-test('2 comment submit testing', async () => {
-   render(<App/>)
-   const commentInput = screen.getByPlaceholderText("Type comment here") // access by Placeholder
-   const checkBox = screen.getByLabelText("I agree to terms and condition")
-   const commetBtn = screen.getByRole("button", { name: 'Comment' })
+// test('2 comment submit testing', async () => {
+//    render(<App/>)
+//    const commentInput = screen.getByPlaceholderText("Type comment here") // access by Placeholder
+//    const checkBox = screen.getByLabelText("I agree to terms and condition")
+//    const commetBtn = screen.getByRole("button", { name: 'Comment' })
 
-   await userEvent.type(commentInput,"hello")
-   await userEvent.click(checkBox)
-   await userEvent.click(commetBtn)
-
-
-   await userEvent.type(commentInput,"hii")
-   await userEvent.click(commetBtn)
+//    await userEvent.type(commentInput,"hello")
+//    await userEvent.click(checkBox)
+//    await userEvent.click(commetBtn)
 
 
-  const items = screen.getAllByRole('listitem')
-  expect(items.length).toBe(2)
+//    await userEvent.type(commentInput,"hii")
+//    await userEvent.click(commetBtn)
+
+
+//   const items = screen.getAllByRole('listitem')
+//   expect(items.length).toBe(2)
+// });
+
+// ====================================================================================================================================
+
+//  1. getBy 2. queryBy 3. findBy
+// --------getByLableText----------------
+
+describe('getByRole', () => {
+  test('for single getByRole', () => {
+    render(<GetByRole />)
+    const input = screen.getByRole("textbox")
+    expect(input).toBeInTheDocument();
+  
+    const checkBox = screen.getByRole("checkbox")
+    expect(checkBox).toBeInTheDocument()
+  
+    const button = screen.getByRole("button")
+    expect(button).toBeInTheDocument()
+  });
+  
+  test('for multiple getAllByrole', () => {
+    render(<GetAllByRole />)
+    logRoles(screen.getByTestId("slect"))
+    const submitBtn = screen.getAllByRole('button')
+    for (let i = 0; i < submitBtn.length; i++) {
+      expect(submitBtn[i]).toBeInTheDocument()
+    }
+    const slectOption = screen.getAllByRole('option')
+    for (let i = 0; i < slectOption.length; i++) {
+      expect(slectOption[i]).toBeInTheDocument()
+    }
+  
+  });
+});
+
+test('Multiple Elements', () => {
+  render(<MultipleElement />)
+  logRoles(screen.getByTestId("multiple"))
+  const clsBtn = screen.getByRole('button', { name: "Clear" })
+  expect(clsBtn).toBeInTheDocument()
+
+  const submitBtn = screen.getByRole('button', { name: "Submit" })
+  expect(submitBtn).toBeInTheDocument()
+
+  const upBtn = screen.getByRole('button', { name: "Update" })
+  expect(upBtn).toBeInTheDocument()
+
+  const rmBtn = screen.getByRole('button', { name: "Remove" })
+  expect(rmBtn).toBeInTheDocument()
+
+  const female= screen.getByRole('radio',{name:"Female"})
+  expect(female).toBeInTheDocument()
+  const male= screen.getByRole('radio',{name:"Male"})
+  expect(male).toBeInTheDocument()
+});
+
+
+
+describe('getAllByLableText testing', () => {
+  test('getByLableText', () => {
+    render(<GetLableByText />)
+  
+    const input = screen.getByLabelText("Name")
+    expect(input).toBeInTheDocument()
+  
+    const chechBox = screen.getByLabelText('CheckBox')
+    expect(chechBox).toBeInTheDocument()
+  });
+
+  test('getAllByLableText', () => {
+    render(<GetAllLableByText/>)
+    const input = screen.getAllByLabelText("Name")
+    
+    for(let i=0;i<input.length;i++){
+      expect(input[i]).toBeInTheDocument()
+      expect(input[i]).toHaveValue("abcd")
+
+    }
+  });
+  test('2 getAllByLableText', () => {
+    render(<GetAllLableByText/>)
+    const checkBoxs = screen.getAllByLabelText("CheckBox")
+    
+    for(let i=0;i<checkBoxs.length;i++){
+      expect(checkBoxs[i]).toBeInTheDocument()
+      expect(checkBoxs[i]).toBeChecked()
+    }
+  });
+});
+
+describe('getByPlaceholder testing', () => {
+  test('getByPlaceholder', () => {
+    render(<GetByPlaceholderName/>)
+    const input= screen.getByPlaceholderText("Enter Your Name")
+    expect(input).toBeInTheDocument()
+  });
+
+  test('getAllByPlaceholder', () => {
+    render(<GetAllByPlaceholderName/>)
+    const inputs= screen.getAllByPlaceholderText("Enter Name")
+    for(let i=0; i<inputs.length;i++){
+      expect(inputs[i]).toBeInTheDocument()
+    }
+  });
+  
+});
+
+describe('getByText testing', () => {
+  test('getByText', () => {
+    render(<GetByText/>)
+    const hTag= screen.getByText("Heading...")
+    expect(hTag).toBeInTheDocument()
+    const pTag= screen.getByText("Lorem ipsum dolor sit amet consectetur.")
+    expect(pTag).toBeInTheDocument()
+    expect(pTag).toHaveClass("paraStyle") //to check that class is exist or not
+    expect(pTag).toHaveAttribute('id','p1')
+    const btn= screen.getByText("Login")
+    expect(btn).toBeInTheDocument()
+  });
+
+  test('getAllBytext', () => {
+    render(<GetByText/> )
+
+      const hedings= screen.getAllByText("Lorem, ipsum dolor.")
+      for(let i=0; i<hedings.length;i++){
+        expect(hedings[i]).toBeInTheDocument()
+      }
+   
+  });
+
+});
+
+describe('getByTestId testing', () => {
+  test('getByTestId', () => {
+    render(<GetByTestId/>)
+    const testid= screen.getByTestId("divtest")
+    expect(testid).toBeInTheDocument()
+  });
 });

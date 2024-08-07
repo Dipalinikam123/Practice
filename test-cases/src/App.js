@@ -28,8 +28,9 @@ function App() {
       {/* <FunctionalMethod/> */}
       {/* <MultipleElement/> */}
       {/* <RegisterForm/> */}
-      <CommentBox setComments={setComments}/>
-      <CommentList allComments={comments}/>
+      <Counter/>
+      {/* <CommentBox setComments={setComments}/>
+      <CommentList allComments={comments}/> */}
      
     </div>
   );
