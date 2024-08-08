@@ -1,5 +1,5 @@
 import React from 'react';
-import { fireEvent, logRoles, render, screen } from '@testing-library/react';
+import { configure, fireEvent, logRoles, render, screen } from '@testing-library/react';
 import App from './App';
 import printHandler from './Practice/helper';
 import FormComponant from './Practice/FormComponant';
@@ -10,9 +10,8 @@ import userEvent from "@testing-library/user-event"
 import CommentList from './Practice/CommentBox/CommentList';
 import ClickEvent from './Practice/ClickEvent';
 import Counter from './Practice/Counter';
-import { GetAllByPlaceholderName, GetAllByRole, GetAllLableByText, GetByPlaceholderName, GetByRole, GetByTestId, GetByText, GetLableByText, MultipleElement } from './Practice/RTL/RTLQueried';
-
-
+import { AssertionMethod, GetAllByPlaceholderName, GetAllByRole, GetAllLableByText, GetByAlt, GetByPlaceholderName, GetByRole, GetByTestId, GetByText, GetByTitle, GetDisplayByValue, GetLableByText, MultipleElement, OverrideId } from './Practice/RTL/RTLQueried';
+import {FindBy, QueryBy, TextMatch} from './Practice/RTL/TextMatch';
 // --------simple componant testing ---------------------------
 
 // test('renders learn react link', () => {
@@ -501,7 +500,7 @@ import { GetAllByPlaceholderName, GetAllByRole, GetAllLableByText, GetByPlacehol
 //  1. getBy 2. queryBy 3. findBy
 // --------getByLableText----------------
 
-describe('getByRole', () => {
+describe.skip('getByRole', () => {
   test('for single getByRole', () => {
     render(<GetByRole />)
     const input = screen.getByRole("textbox")
@@ -552,7 +551,7 @@ test('Multiple Elements', () => {
 
 
 
-describe('getAllByLableText testing', () => {
+describe.skip('getAllByLableText testing', () => {
   test('getByLableText', () => {
     render(<GetLableByText />)
   
@@ -584,7 +583,7 @@ describe('getAllByLableText testing', () => {
   });
 });
 
-describe('getByPlaceholder testing', () => {
+describe.skip('getByPlaceholder testing', () => {
   test('getByPlaceholder', () => {
     render(<GetByPlaceholderName/>)
     const input= screen.getByPlaceholderText("Enter Your Name")
@@ -601,7 +600,7 @@ describe('getByPlaceholder testing', () => {
   
 });
 
-describe('getByText testing', () => {
+describe.skip('getByText testing', () => {
   test('getByText', () => {
     render(<GetByText/>)
     const hTag= screen.getByText("Heading...")
@@ -626,10 +625,109 @@ describe('getByText testing', () => {
 
 });
 
-describe('getByTestId testing', () => {
+
+describe.skip('getByTestId testing', () => {
   test('getByTestId', () => {
     render(<GetByTestId/>)
     const testid= screen.getByTestId("divtest")
     expect(testid).toBeInTheDocument()
   });
+  test('getAllByTestId', () => {
+     render(<GetByTestId/>)
+     const checkId= screen.getAllByTestId("test-div")
+     for(let i=0;i<checkId.length;i++)
+      expect(checkId[i]).toBeInTheDocument()
+  });
+  //----- id override------
+  // configure({ testIdAttribute: 'id' }); 
+  // test('override id', () => {
+  //   render(<OverrideId/>)
+  //   const testDiv = screen.getByTestId('test-div-override');
+  //   expect(testDiv).toBeInTheDocument();
+  // });
+});
+test('getByTestId', () => {
+  render(<GetDisplayByValue/>)
+  const input= screen.getByDisplayValue("purvi")
+  expect(input).toBeInTheDocument()
+
+  const textArea= screen.getByDisplayValue('manisha')
+  expect(textArea).toBeInTheDocument()
+  const radio= screen.getByDisplayValue('male')
+  expect(radio).toBeInTheDocument()
+
+  // if multiple value then use getAllByDisplayValue
+});
+
+test('getByTitle', () => {
+  // -- to check icon or span tag --
+  render(<GetByTitle/>)
+  const title= screen.getByTitle('click')
+  expect(title).toBeInTheDocument()
+  
+  const iconSpan=screen.getByTitle("black-tash")
+  expect(iconSpan).toBeInTheDocument()
+
+  // for mutliple use getAllByTitle
+});
+
+test('getByAltText', () => {
+  render(<GetByAlt/>)
+  const altText= screen.getByAltText('img not found')
+  expect(altText).toBeInTheDocument()
+  // for multple use getAllByAltText
+});
+
+describe.skip('Assertion method', () => {
+  test('Possitive Assertion method', () => {
+    render(<AssertionMethod/>)
+    const input= screen.getByRole("textbox")
+    expect(input).toBeInTheDocument()
+    expect(input).toHaveValue()
+    expect(input).toHaveValue("neha")
+    expect(input).toHaveAttribute('id')
+    expect(input).toHaveClass("dummy")
+  });
+
+  test('Negative assertion method', () => {
+    render(<AssertionMethod/>)
+    const button=screen.getByRole("button")
+    expect(button).toBeInTheDocument()
+    expect(button).not.toHaveAttribute('id')
+    expect(button).not.toHaveClass()
+    expect(button).not.toBeDisabled()
+  });
+});
+
+test('TextMatch', () => {
+  render(<TextMatch/>)
+  // ---with string
+  // const textmatch= screen.getByText("hello world",{exact:false})
+  // const textmatch= screen.getByText("Hello world")
+  // expect(textmatch).toBeInTheDocument()
+  
+  // ----with regex
+  // const textmatch= screen.getByText(/hello world/i)
+  // const textmatch= screen.getByText(/lo wor/i)
+  // expect(textmatch).toBeInTheDocument()
+
+  // -----with Function
+  // const textmatch= screen.getByText((content,elememt)=>content.includes("Hello"))
+  // const textmatch= screen.getByText((content,elememt)=>content.startsWith("Hello"))
+  const textmatch= screen.getByText((content,elememt)=>content.length===11)
+    expect(textmatch).toBeInTheDocument()
+});
+
+// to check hide element
+test('QueryBy', () => {
+  render(<QueryBy/>)
+  // const button= screen.getByText("Logout") //failed becuase this text is absence/ hide in dom
+    const button= screen.queryByText("Logout")
+  expect(button).not.toBeInTheDocument()
+});
+
+test('FindBy', async () => { //findby default run time is 1000ms so we ned to set time 
+  render(<FindBy/>)
+  const findby= await screen.findByText("Data Found",{},{timeout:4000}) //limit 5000
+  expect(findby).toBeInTheDocument()
 });

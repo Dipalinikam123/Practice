@@ -119,6 +119,63 @@ export function GetByTestId() { //used for elememt text
     return (
         <>
             <div data-testid="divtest">Lorem ipsum dolor sit amet.</div>
+            <div data-testid="test-div">Lorem ipsum dolor sit amet.</div>
+            <div data-testid="test-div">Lorem ipsum dolor sit amet.</div>
+            <div data-testid="test-div">Lorem ipsum dolor sit amet.</div>
+
+           
+
+        </>
+    )
+}
+export function  OverrideId() {
+    return(
+        <>
+          {/* id override */}
+          <div id="test-div-override">Lorem ipsum dolor sit amet.</div>
+        </>
+    )
+    
+}
+export function  GetDisplayByValue() {
+    return(
+        <>
+          <input type='text' defaultValue={"purvi"}/>
+          <input type='textarea' defaultValue={"manisha"}/>
+          <input type='radio' defaultValue={"male"}/>
+        </>
+    )
+
+}
+
+export function GetByTitle() {
+    return (
+        <>
+        <button title='click'>Click Me</button><br/>
+        <span title='black-tash'> &#9824;</span>
+        </>
+    )
+    
+}
+export function GetByAlt() {
+    return (
+        <>
+        <img src="https://img-cdn.pixlr.com/image-generator/history/65bb506dcb310754719cf81f/ede935de-1138-4f66-8ed7-44bd16efc709/medium.webp" alt="img not found"/>
+        </>
+    ) 
+}
+
+export function AssertionMethod() {
+    return(
+        <>
+        <input type='text' 
+        defaultValue={"neha"}
+        name='username'
+        className='dummy'
+        id={"user-name"}
+        />
+
+        <button >click</button>
         </>
     )
 }

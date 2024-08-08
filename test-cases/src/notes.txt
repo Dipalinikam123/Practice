@@ -1,0 +1,57 @@
+Assertion method in react testing library
+what is Assertion ?
+ans. => assertion refers to a statement in your test code that checks whether a particular condition is true. Assertions are used to verify that the code under test behaves as expected. If the condition in an assertion is not met, the test will fail, indicating that something in the component or functionality being tested is not working correctly.
+* ex- expect(elememt_name).toBeInTheDocument()  // this is Assertion
+
+------ positives------
+1.Presence in the Document: Checks whether an element is rendered in the DOM.
+expect(screen.getByText('Hello, world!')).toBeInTheDocument();
+
+2.Element Visibility: Checks whether an element is visible in the DOM.
+expect(screen.getByTestId('my-element')).toBeVisible();
+
+3.Element Content: Verifies that an element contains the expected text or content.
+expect(screen.getByText('Submit')).toHaveTextContent('Submit');
+
+4.Element Attributes: Checks that an element has the expected attributes or properties.
+expect(screen.getByRole('button')).toHaveAttribute('disabled');
+expect(screen.getByRole('button')).toHaveAttribute('id');
+
+5.Element class : Checks that an element has the expected class or.  
+expect(e_name).toHaveClass("class_name")
+
+6.Value of Form Elements: Checks the value of form inputs.
+expect(screen.getByLabelText('Username')).toHaveValue('john_doe');
+
+7.Element Count: Verifies the number of elements that match a certain query.
+expect(screen.getAllByRole('listitem')).toHaveLength(3);
+
+expect(screen.getByTestId('my-element')).toBeEnabled();
+expect(screen.getByTestId('my-element')).toBeDisabled();
+
+-------negative----------
+use .not
+
+we can use not to all assertion method
+expect(screen.getByTestId('my-element')).not.toBeEnabled();
+
+
+---------------------------------------------------------------------------------------------------------
+
+ Text Match 3 ways use with string, regex, function
+1. with string exact character/ words have to use or {exact:false}
+2.with regex use (/hello/i) i is for incase sensitive
+test('text matching with string, regex, and function', () => {
+    render(<MyComponent />);
+    
+    // String match
+    expect(screen.getByText('Exact Text')).toBeInTheDocument();
+    
+    // Regex match
+    expect(screen.getByText(/part of the text/i)).toBeInTheDocument();
+    
+    // Function match
+    expect(screen.getByText((content, element) => 
+        content.includes('dynamic') && element.tagName.toLowerCase() === 'span'
+    )).toBeInTheDocument();
+});

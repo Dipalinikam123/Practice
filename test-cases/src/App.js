@@ -11,6 +11,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import CommentBox from './Practice/CommentBox/CommentBox';
 import CommentList from './Practice/CommentBox/CommentList';
 import { useState } from 'react';
+import { GetByTitle } from './Practice/RTL/RTLQueried';
+import { FindBy, QueryBy } from './Practice/RTL/TextMatch';
 
 function App() {
 
@@ -28,9 +30,12 @@ function App() {
       {/* <FunctionalMethod/> */}
       {/* <MultipleElement/> */}
       {/* <RegisterForm/> */}
-      <Counter/>
+      {/* <Counter/> */}
       {/* <CommentBox setComments={setComments}/>
       <CommentList allComments={comments}/> */}
+      {/* <GetByTitle/> */}
+      {/* <QueryBy/> */}
+      <FindBy/>
      
     </div>
   );
