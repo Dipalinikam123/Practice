@@ -1,5 +1,5 @@
 import React from 'react';
-import { configure, fireEvent, logRoles, render, screen } from '@testing-library/react';
+import { act, configure, fireEvent, logRoles, render, screen, within } from '@testing-library/react';
 import App from './App';
 import printHandler from './Practice/helper';
 import FormComponant from './Practice/FormComponant';
@@ -8,10 +8,13 @@ import RegisterForm from './Practice/RegisterForm';
 import CommentBox from './Practice/CommentBox/CommentBox';
 import userEvent from "@testing-library/user-event"
 import CommentList from './Practice/CommentBox/CommentList';
-import ClickEvent from './Practice/ClickEvent';
+// import ClickEvent from './Practice/ClickEvent';
 import Counter from './Practice/Counter';
 import { AssertionMethod, GetAllByPlaceholderName, GetAllByRole, GetAllLableByText, GetByAlt, GetByPlaceholderName, GetByRole, GetByTestId, GetByText, GetByTitle, GetDisplayByValue, GetLableByText, MultipleElement, OverrideId } from './Practice/RTL/RTLQueried';
-import {FindBy, QueryBy, TextMatch} from './Practice/RTL/TextMatch';
+import { FindBy, QueryBy, TextMatch } from './Practice/RTL/TextMatch';
+import { QueryingWithinEle, TestJsQuery } from './Practice/RTL/TestJsQuery';
+import { ActFun, ClickEvent, UserChangeEvent, UserClickEvent } from './Practice/RTL/UserEvent';
+import {FunctionalProps, Props} from './Practice/RTL/Props';
 // --------simple componant testing ---------------------------
 
 // test('renders learn react link', () => {
@@ -505,14 +508,14 @@ describe.skip('getByRole', () => {
     render(<GetByRole />)
     const input = screen.getByRole("textbox")
     expect(input).toBeInTheDocument();
-  
+
     const checkBox = screen.getByRole("checkbox")
     expect(checkBox).toBeInTheDocument()
-  
+
     const button = screen.getByRole("button")
     expect(button).toBeInTheDocument()
   });
-  
+
   test('for multiple getAllByrole', () => {
     render(<GetAllByRole />)
     logRoles(screen.getByTestId("slect"))
@@ -524,7 +527,7 @@ describe.skip('getByRole', () => {
     for (let i = 0; i < slectOption.length; i++) {
       expect(slectOption[i]).toBeInTheDocument()
     }
-  
+
   });
 });
 
@@ -543,9 +546,9 @@ test('Multiple Elements', () => {
   const rmBtn = screen.getByRole('button', { name: "Remove" })
   expect(rmBtn).toBeInTheDocument()
 
-  const female= screen.getByRole('radio',{name:"Female"})
+  const female = screen.getByRole('radio', { name: "Female" })
   expect(female).toBeInTheDocument()
-  const male= screen.getByRole('radio',{name:"Male"})
+  const male = screen.getByRole('radio', { name: "Male" })
   expect(male).toBeInTheDocument()
 });
 
@@ -554,29 +557,29 @@ test('Multiple Elements', () => {
 describe.skip('getAllByLableText testing', () => {
   test('getByLableText', () => {
     render(<GetLableByText />)
-  
+
     const input = screen.getByLabelText("Name")
     expect(input).toBeInTheDocument()
-  
+
     const chechBox = screen.getByLabelText('CheckBox')
     expect(chechBox).toBeInTheDocument()
   });
 
   test('getAllByLableText', () => {
-    render(<GetAllLableByText/>)
+    render(<GetAllLableByText />)
     const input = screen.getAllByLabelText("Name")
-    
-    for(let i=0;i<input.length;i++){
+
+    for (let i = 0; i < input.length; i++) {
       expect(input[i]).toBeInTheDocument()
       expect(input[i]).toHaveValue("abcd")
 
     }
   });
   test('2 getAllByLableText', () => {
-    render(<GetAllLableByText/>)
+    render(<GetAllLableByText />)
     const checkBoxs = screen.getAllByLabelText("CheckBox")
-    
-    for(let i=0;i<checkBoxs.length;i++){
+
+    for (let i = 0; i < checkBoxs.length; i++) {
       expect(checkBoxs[i]).toBeInTheDocument()
       expect(checkBoxs[i]).toBeChecked()
     }
@@ -585,42 +588,42 @@ describe.skip('getAllByLableText testing', () => {
 
 describe.skip('getByPlaceholder testing', () => {
   test('getByPlaceholder', () => {
-    render(<GetByPlaceholderName/>)
-    const input= screen.getByPlaceholderText("Enter Your Name")
+    render(<GetByPlaceholderName />)
+    const input = screen.getByPlaceholderText("Enter Your Name")
     expect(input).toBeInTheDocument()
   });
 
   test('getAllByPlaceholder', () => {
-    render(<GetAllByPlaceholderName/>)
-    const inputs= screen.getAllByPlaceholderText("Enter Name")
-    for(let i=0; i<inputs.length;i++){
+    render(<GetAllByPlaceholderName />)
+    const inputs = screen.getAllByPlaceholderText("Enter Name")
+    for (let i = 0; i < inputs.length; i++) {
       expect(inputs[i]).toBeInTheDocument()
     }
   });
-  
+
 });
 
 describe.skip('getByText testing', () => {
   test('getByText', () => {
-    render(<GetByText/>)
-    const hTag= screen.getByText("Heading...")
+    render(<GetByText />)
+    const hTag = screen.getByText("Heading...")
     expect(hTag).toBeInTheDocument()
-    const pTag= screen.getByText("Lorem ipsum dolor sit amet consectetur.")
+    const pTag = screen.getByText("Lorem ipsum dolor sit amet consectetur.")
     expect(pTag).toBeInTheDocument()
     expect(pTag).toHaveClass("paraStyle") //to check that class is exist or not
-    expect(pTag).toHaveAttribute('id','p1')
-    const btn= screen.getByText("Login")
+    expect(pTag).toHaveAttribute('id', 'p1')
+    const btn = screen.getByText("Login")
     expect(btn).toBeInTheDocument()
   });
 
   test('getAllBytext', () => {
-    render(<GetByText/> )
+    render(<GetByText />)
 
-      const hedings= screen.getAllByText("Lorem, ipsum dolor.")
-      for(let i=0; i<hedings.length;i++){
-        expect(hedings[i]).toBeInTheDocument()
-      }
-   
+    const hedings = screen.getAllByText("Lorem, ipsum dolor.")
+    for (let i = 0; i < hedings.length; i++) {
+      expect(hedings[i]).toBeInTheDocument()
+    }
+
   });
 
 });
@@ -628,14 +631,14 @@ describe.skip('getByText testing', () => {
 
 describe.skip('getByTestId testing', () => {
   test('getByTestId', () => {
-    render(<GetByTestId/>)
-    const testid= screen.getByTestId("divtest")
+    render(<GetByTestId />)
+    const testid = screen.getByTestId("divtest")
     expect(testid).toBeInTheDocument()
   });
   test('getAllByTestId', () => {
-     render(<GetByTestId/>)
-     const checkId= screen.getAllByTestId("test-div")
-     for(let i=0;i<checkId.length;i++)
+    render(<GetByTestId />)
+    const checkId = screen.getAllByTestId("test-div")
+    for (let i = 0; i < checkId.length; i++)
       expect(checkId[i]).toBeInTheDocument()
   });
   //----- id override------
@@ -647,13 +650,13 @@ describe.skip('getByTestId testing', () => {
   // });
 });
 test('getByTestId', () => {
-  render(<GetDisplayByValue/>)
-  const input= screen.getByDisplayValue("purvi")
+  render(<GetDisplayByValue />)
+  const input = screen.getByDisplayValue("purvi")
   expect(input).toBeInTheDocument()
 
-  const textArea= screen.getByDisplayValue('manisha')
+  const textArea = screen.getByDisplayValue('manisha')
   expect(textArea).toBeInTheDocument()
-  const radio= screen.getByDisplayValue('male')
+  const radio = screen.getByDisplayValue('male')
   expect(radio).toBeInTheDocument()
 
   // if multiple value then use getAllByDisplayValue
@@ -661,27 +664,27 @@ test('getByTestId', () => {
 
 test('getByTitle', () => {
   // -- to check icon or span tag --
-  render(<GetByTitle/>)
-  const title= screen.getByTitle('click')
+  render(<GetByTitle />)
+  const title = screen.getByTitle('click')
   expect(title).toBeInTheDocument()
-  
-  const iconSpan=screen.getByTitle("black-tash")
+
+  const iconSpan = screen.getByTitle("black-tash")
   expect(iconSpan).toBeInTheDocument()
 
   // for mutliple use getAllByTitle
 });
 
 test('getByAltText', () => {
-  render(<GetByAlt/>)
-  const altText= screen.getByAltText('img not found')
+  render(<GetByAlt />)
+  const altText = screen.getByAltText('img not found')
   expect(altText).toBeInTheDocument()
   // for multple use getAllByAltText
 });
 
 describe.skip('Assertion method', () => {
   test('Possitive Assertion method', () => {
-    render(<AssertionMethod/>)
-    const input= screen.getByRole("textbox")
+    render(<AssertionMethod />)
+    const input = screen.getByRole("textbox")
     expect(input).toBeInTheDocument()
     expect(input).toHaveValue()
     expect(input).toHaveValue("neha")
@@ -690,8 +693,8 @@ describe.skip('Assertion method', () => {
   });
 
   test('Negative assertion method', () => {
-    render(<AssertionMethod/>)
-    const button=screen.getByRole("button")
+    render(<AssertionMethod />)
+    const button = screen.getByRole("button")
     expect(button).toBeInTheDocument()
     expect(button).not.toHaveAttribute('id')
     expect(button).not.toHaveClass()
@@ -700,12 +703,12 @@ describe.skip('Assertion method', () => {
 });
 
 test('TextMatch', () => {
-  render(<TextMatch/>)
+  render(<TextMatch />)
   // ---with string
   // const textmatch= screen.getByText("hello world",{exact:false})
   // const textmatch= screen.getByText("Hello world")
   // expect(textmatch).toBeInTheDocument()
-  
+
   // ----with regex
   // const textmatch= screen.getByText(/hello world/i)
   // const textmatch= screen.getByText(/lo wor/i)
@@ -714,20 +717,94 @@ test('TextMatch', () => {
   // -----with Function
   // const textmatch= screen.getByText((content,elememt)=>content.includes("Hello"))
   // const textmatch= screen.getByText((content,elememt)=>content.startsWith("Hello"))
-  const textmatch= screen.getByText((content,elememt)=>content.length===11)
-    expect(textmatch).toBeInTheDocument()
+  const textmatch = screen.getByText((content, elememt) => content.length === 11)
+  expect(textmatch).toBeInTheDocument()
 });
 
 // to check hide element
 test('QueryBy', () => {
-  render(<QueryBy/>)
+  render(<QueryBy />)
   // const button= screen.getByText("Logout") //failed becuase this text is absence/ hide in dom
-    const button= screen.queryByText("Logout")
+  const button = screen.queryByText("Logout")
   expect(button).not.toBeInTheDocument()
 });
 
 test('FindBy', async () => { //findby default run time is 1000ms so we ned to set time 
-  render(<FindBy/>)
-  const findby= await screen.findByText("Data Found",{},{timeout:4000}) //limit 5000
+  render(<FindBy />)
+  const findby = await screen.findByText("Data Found", {}, { timeout: 4000 }) //limit 5000
   expect(findby).toBeInTheDocument()
+});
+
+test('Test with js Query/ custom query', () => {
+  render(<TestJsQuery />)
+  const customId = document.querySelector("#div-id")
+  expect(customId).toBeInTheDocument()
+  expect(customId).toHaveTextContent("TestJsQuery")
+  expect(customId).toHaveAttribute("id")
+
+  const customId2 = document.querySelector(".class-id")
+  expect(customId2).toBeInTheDocument()
+  expect(customId2).toHaveTextContent("Hello, purvi")
+  expect(customId2).toHaveAttribute("class")
+});
+
+test('Test child Ele with parent Ele using Within', () => {
+  render(<QueryingWithinEle />)
+  const parentEle = screen.getByText("hello world")
+  const childEle = within(parentEle).getByText("hii")
+  const childEle2 = within(parentEle).getByText("bye")
+  const childEle3 = within(parentEle).getByText("see you")
+  expect(parentEle).toBeInTheDocument()
+  expect(childEle).toBeInTheDocument()
+  expect(childEle2).toBeInTheDocument()
+  expect(childEle3).toBeInTheDocument()
+});
+
+describe('User Event', () => {
+  test('User click Event', async () => {
+    render(<UserClickEvent />)
+    const btn = screen.getByRole("button")
+    expect(btn).toBeInTheDocument()
+
+    await userEvent.click(btn)
+    expect(screen.getByText("Hello")).toBeInTheDocument()
+
+  });
+  test('User onChange Event', async () => {
+    render(<UserChangeEvent />)
+    const input = screen.getByRole("textbox")
+    expect(input).toBeInTheDocument()
+
+    await userEvent.type(input, "abcd")
+    expect(screen.getByText("abcd")).toBeInTheDocument()
+  });
+  test('act function', async () => {
+    render(<ActFun />)
+    const input = screen.getByRole("textbox")
+    expect(input).toBeInTheDocument()
+
+    await act(async () => {
+      await userEvent.type(input, "abcd")
+    })
+    expect(screen.getByText("abcd")).toBeInTheDocument()
+  });
+});
+
+describe('Props Testing', () => {
+  test('Normal Name Props ', () => {
+    const name="neha"
+    render(<Props name={name}/>)
+    const user= screen.getByText(`My Name is:${name}`)
+    expect(user).toBeInTheDocument()
+  });
+  
+});
+
+test('Functional Prop', async () => {
+  const mockFunction = jest.fn();   
+  render(<FunctionalProps mockFunction={mockFunction}/>)
+  const btn =screen.getByRole("button")
+
+  await userEvent.click(btn)
+  expect(mockFunction).toHaveBeenCalled()
 });

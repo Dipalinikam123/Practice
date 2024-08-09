@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Counter from '../../test-cases/src/Practice/Counter';
 import ClassComp from '../../test-cases/src/Practice/ClassComp';
-import ClickEvent from '../../test-cases/src/Practice/ClickEvent';
+// import ClickEvent from '../../test-cases/src/Practice/ClickEvent';
 import FormComponant from '../../test-cases/src/Practice/FormComponant';
 import FunctionalMethod from '../../test-cases/src/Practice/FunctionalMethod';
 import MultipleElement from './Practice/MultipleElement';
@@ -13,6 +13,9 @@ import CommentList from './Practice/CommentBox/CommentList';
 import { useState } from 'react';
 import { GetByTitle } from './Practice/RTL/RTLQueried';
 import { FindBy, QueryBy } from './Practice/RTL/TextMatch';
+import { ClickEvent, UserChangeEvent, UserClickEvent } from './Practice/RTL/UserEvent';
+import {Props, FunctionalProps } from './Practice/RTL/Props';
+import APICalling from './Practice/RTL/APICalling';
 
 function App() {
 
@@ -35,7 +38,12 @@ function App() {
       <CommentList allComments={comments}/> */}
       {/* <GetByTitle/> */}
       {/* <QueryBy/> */}
-      <FindBy/>
+      {/* <FindBy/> */}
+      {/* <UserClickEvent/> */}
+      {/* <UserChangeEvent/> */}
+      {/* <Props name={"purvi"}/> */}
+      {/* <FunctionalProps/> */}
+      <APICalling/>
      
     </div>
   );
