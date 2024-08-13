@@ -13,7 +13,7 @@ import Counter from './Practice/Counter';
 import { AssertionMethod, GetAllByPlaceholderName, GetAllByRole, GetAllLableByText, GetByAlt, GetByPlaceholderName, GetByRole, GetByTestId, GetByText, GetByTitle, GetDisplayByValue, GetLableByText, MultipleElement, OverrideId } from './Practice/RTL/RTLQueried';
 import { FindBy, QueryBy, TextMatch } from './Practice/RTL/TextMatch';
 import { QueryingWithinEle, TestJsQuery } from './Practice/RTL/TestJsQuery';
-import { ActFun, ClickEvent, UserChangeEvent, UserClickEvent } from './Practice/RTL/UserEvent';
+import { ActFun, CallBackFun, ClickEvent, UserChangeEvent, UserClickEvent } from './Practice/RTL/UserEvent';
 import {FunctionalProps, Props} from './Practice/RTL/Props';
 // --------simple componant testing ---------------------------
 
@@ -807,4 +807,16 @@ test('Functional Prop', async () => {
 
   await userEvent.click(btn)
   expect(mockFunction).toHaveBeenCalled()
+});
+
+test('renders text after timeout', async () => {
+  render(<CallBackFun />);
+
+  // Wait for the elements to appear with a timeout of 4000ms
+  const fname = await screen.findByText(/dipali/, {}, { timeout: 4000 });
+  const lname = await screen.findByText(/nikam/, {}, { timeout: 4000 });
+
+  // Assert that the elements are in the document
+  expect(fname).toBeInTheDocument();
+  expect(lname).toBeInTheDocument();
 });

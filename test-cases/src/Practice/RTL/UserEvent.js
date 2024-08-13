@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export function UserClickEvent() {
 
@@ -29,6 +29,33 @@ export function ActFun() {
         <>
             <h3>{name}</h3>
             <input type="text" placeholder="Enter Name" onChange={(e) => setName(e?.target?.value)} />
+        </>
+    )
+}
+
+export function CallBackFun(params) {
+    const [fname,setFname]=useState('')
+    const [lname,setLname]=useState('')
+    useEffect(() => {
+
+        const fname = (callback) => {
+            setTimeout(() => {
+                setFname("dipali");
+                callback()
+            }, 3000)
+        }
+        const lname = () => {
+            setLname("nikam");
+        }
+        fname( lname)
+       
+
+    }, [])
+    return (
+        <>
+           <p>
+            {fname} - {lname}
+           </p>
         </>
     )
 }

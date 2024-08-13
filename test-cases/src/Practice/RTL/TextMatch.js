@@ -22,6 +22,7 @@ export function QueryBy() {
 // when ui element takes time tp print/ ex. depending on api or some issue
 export function FindBy(params) {
     const [state,setState]= useState(false);
+    
     useEffect(() => {
      setTimeout(() => {
         setState(true)

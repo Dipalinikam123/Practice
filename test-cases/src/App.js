@@ -13,7 +13,7 @@ import CommentList from './Practice/CommentBox/CommentList';
 import { useState } from 'react';
 import { GetByTitle } from './Practice/RTL/RTLQueried';
 import { FindBy, QueryBy } from './Practice/RTL/TextMatch';
-import { ClickEvent, UserChangeEvent, UserClickEvent } from './Practice/RTL/UserEvent';
+import { CallBackFun, ClickEvent, UserChangeEvent, UserClickEvent } from './Practice/RTL/UserEvent';
 import {Props, FunctionalProps } from './Practice/RTL/Props';
 import APICalling from './Practice/RTL/APICalling';
 
@@ -32,7 +32,7 @@ function App() {
       {/* <FormComponant/> */}
       {/* <FunctionalMethod/> */}
       {/* <MultipleElement/> */}
-      {/* <RegisterForm/> */}
+      <RegisterForm/>
       {/* <Counter/> */}
       {/* <CommentBox setComments={setComments}/>
       <CommentList allComments={comments}/> */}
@@ -43,7 +43,8 @@ function App() {
       {/* <UserChangeEvent/> */}
       {/* <Props name={"purvi"}/> */}
       {/* <FunctionalProps/> */}
-      <APICalling/>
+      {/* <APICalling/> */}
+      {/* <CallBackFun/> */}
      
     </div>
   );
