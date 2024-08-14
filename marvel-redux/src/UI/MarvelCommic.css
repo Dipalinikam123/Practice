@@ -1,0 +1,19 @@
+.comic-thumbnail {
+    position: relative;
+    width: 100%;
+    padding-top: 150%; /* Aspect ratio of 2:3 (height is 1.5 times the width) */
+    overflow: hidden;
+    background-color: #f9f9f9; /* Optional background color */
+    border: 1px solid #ddd; /* Optional border */
+    border-radius: 4px; /* Optional border-radius */
+  }
+  
+  .comic-thumbnail img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill; /* Ensures the image covers the container without distortion */
+  }
+  
