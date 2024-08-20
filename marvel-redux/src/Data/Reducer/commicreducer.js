@@ -18,7 +18,7 @@ const fetchApiReducer=(state =initialState,action)=>{
           return {
             ...state,
             loading: false,
-            data: action.payload
+            data: [...state.data,...action.payload]
           };
         case 'FETCH_API_FAILURE':
           return {

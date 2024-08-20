@@ -26,18 +26,20 @@ const publicKey = 'caa605ac9607a904ac4277866f4bbb23'
 const timeStamp = '1723536781813'
 const hashKey = 'ab47f2dac9b62b45e88ef8605f5d3adb'
 
-export const fetchApiData = () => {
+export const fetchApiData = (offset,limit) => {
     return (dispatch) => {
         dispatch(fetchApiRequest());
         
         axios({
             method: "get",
-            url: `https://gateway.marvel.com:443/v1/public/comics`,
-            params: {
-                apikey: publicKey,
-                ts: timeStamp,
-                hash: hashKey,
-            }
+            url: `https://gateway.marvel.com:443/v1/public/comics?limit=${limit}&offset=${offset}&apikey=${publicKey}&ts=${timeStamp}&hash=${hashKey}`,
+            // params: {
+            //     apikey: publicKey,
+            //     ts: timeStamp,
+            //     hash: hashKey,
+            //     offset: offset,
+            //     limit:limit
+            // }
 
         }).then((res) => {
             dispatch(fetchApiSuccess(res?.data?.data?.results))

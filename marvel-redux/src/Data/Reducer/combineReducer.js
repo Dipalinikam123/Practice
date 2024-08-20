@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import fetchApiReducer from "./reducer";
+import fetchApiReducer from "./commicreducer";
 
 
 export const rootReducer= combineReducers({
