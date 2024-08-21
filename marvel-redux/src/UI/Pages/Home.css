@@ -1,0 +1,28 @@
+/* Home.css */
+.carousel {
+    height: 70vh; /* 50% of the viewport height */
+  }
+  
+  .carousel-inner {
+    height: 100%;
+  }
+  
+  .carousel-item {
+    height: 100%;
+  }
+  
+  .carousel-item img {
+    object-fit: cover; /* Ensures the image covers the container while maintaining aspect ratio */
+    height: 100%;
+    width: 100%;
+    filter: brightness(50%);
+  }
+  button{
+    font-size:14px;
+    letter-spacing:1px;
+    /* box-shadow:none; */
+  }
+  .button-skew{
+    transform: skewX(-20deg)
+  }
+  

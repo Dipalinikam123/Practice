@@ -4,8 +4,9 @@ import { NavLink } from "react-router-dom";
 export default function NavBar() {
     return (
         <div className='w-100 bg-dark '>
+            <hr className="m-0 p-0 text-light"/>
             <nav>
-                <ul  className='list-unstyled d-flex justify-content-center gap-2'>
+                <ul  className='list-unstyled d-md-flex justify-content-center m-0 py-2 gap-5 d-none d-md-block'>
                     <li>
                         <NavLink className='text-decoration-none text-white ' to={"/"}>Home</NavLink>
                     </li>
