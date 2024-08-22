@@ -26,7 +26,7 @@ const obj = [
 export default function Home() {
   return (
     <>
-      <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="next" >
+      <div id="carouselExampleCaptions" className="carousel slide " data-bs-slide="next" data-bs-ride="carousel" >
         <div className="carousel-indicators">
           {obj.map((_, index) => (
             <button
@@ -47,9 +47,9 @@ export default function Home() {
               className={`carousel-item ${index === 0 ? 'active' : ''}` }
             >
               <img src={item.img} className="d-block  w-100" alt={`Slide ${index + 1}`} />
-              <div className="carousel-caption d-none d-md-block position-absolute top-50 text-start">
-                <div className="bg-transparent text-light px-4 py-1 mb-4 w-25 border-white">{item?.btn}</div>
-                <h2 className="text-uppercase text-bold">{item.text}</h2>
+              <div className="carousel-caption d-none d-md-block position-absolute text-start" style={{top:"35%"}}>
+                <div className="bg-transparent text-light px-4 py-1 border-div">{item?.btn}</div>
+                <p className="text-uppercase fs-2" style={{textWeight:"900"}}>{item.text}</p>
                <button className="bg-danger px-3 py-2 text-light border-0 mt-2 button-skew">READ MORE!</button>
               </div> 
             </div>

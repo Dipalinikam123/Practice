@@ -8,9 +8,10 @@ import Home from './UI/Pages/Home';
 import About from './UI/Pages/About';
 import Contact from './UI/Pages/Contact';
 import SinglePage from './UI/Pages/SinglePage';
+// import MarvelCommics from './UI/Pages/MarvelComics';
 
 // Lazy load the MarvelCommic component
-const MarvelCommic = lazy(() => import('./UI/Pages/MarvelCommic'));
+const MarvelComics = lazy(() => import('./UI/Pages/MarvelComics'));
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
             path='/comic' 
             element={
               <Suspense fallback={<div className='text-center'>Loading...</div>}>
-                <MarvelCommic />
+                <MarvelComics />
               </Suspense>
             }
           />

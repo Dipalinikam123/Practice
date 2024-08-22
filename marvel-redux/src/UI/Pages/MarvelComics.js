@@ -4,7 +4,8 @@ import { fetchComicData } from '../../Store/Action/action';
 import { useNavigate } from "react-router";
 import './MarvelCommic.css';
 
-export default function MarvelCommic() {
+
+export default function MarvelComics() {
   const data = useSelector((store) => store?.fetchApiReducer);
   const dispatch = useDispatch();
 
@@ -44,6 +45,7 @@ export default function MarvelCommic() {
 
   return (
     <>
+    <h1>hellooooo</h1>
       {data?.error && <h1 className='App'>Error loading data</h1>}
       <div>
         <div className='container d-flex justify-content-center flex-wrap gap-3 w-full'>
@@ -65,7 +67,8 @@ export default function MarvelCommic() {
           ))}
         </div>
       </div>
-      {data?.loading && <div className='d-flex justify-content-center my-3'><div className="loader"></div></div> }
+      {/* <div className="loader"></div> */}
+      {data?.loading && <div className='d-flex justify-content-center my-3'>Loading...</div> }
     </>
   );
 }

@@ -15,7 +15,7 @@
     object-fit: cover; /* Ensures the image covers the container while maintaining aspect ratio */
     height: 100%;
     width: 100%;
-    filter: brightness(50%);
+    filter: brightness(40%);
   }
   button{
     font-size:14px;
@@ -25,4 +25,10 @@
   .button-skew{
     transform: skewX(-20deg)
   }
-  
+  .border-div{
+    border:1px solid white;
+    margin-bottom:20px;
+    display: inline-block;
+    font-size:12px;
+    letter-spacing:1px;
+  }
