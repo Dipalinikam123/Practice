@@ -8,6 +8,7 @@ import Home from './UI/Pages/Home';
 import About from './UI/Pages/About';
 import Contact from './UI/Pages/Contact';
 import SinglePage from './UI/Pages/SinglePage';
+import Footer from './UI/Componant/Footer';
 // import MarvelCommics from './UI/Pages/MarvelComics';
 
 // Lazy load the MarvelCommic component
@@ -34,6 +35,7 @@ function App() {
           />
           <Route path='/singlecomic/:id' element={<SinglePage/>}/>
         </Routes>
+        <Footer/>
       </BrowserRouter>
     </div>
   );

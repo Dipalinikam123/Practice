@@ -13,7 +13,7 @@ export default function MarvelComics() {
   // Pagination state
   const [offset, setOffset] = useState(0);
   const [limit] = useState(8); // Number of items per page
-  const navigate=useNavigate()
+  const navigate = useNavigate()
 
   useEffect(() => {
     dispatch(fetchComicData(offset, limit));
@@ -22,10 +22,10 @@ export default function MarvelComics() {
   const handleScroll = () => {
     // Check if we are at the bottom of the page
     if (window.innerHeight + document.documentElement.scrollTop + 1 >= document.documentElement.scrollHeight) {
-    
+
       // console.log("----!data.loading ",!data.loading );
       // console.log("----!data.error ",!data.error );
-      console.log("!data.loading && !data.error",!data.loading && !data.error);
+      console.log("!data.loading && !data.error", !data.loading && !data.error);
       if (!data.loading && !data.error) {
         setOffset(prevOffset => prevOffset + limit);
       }
@@ -39,36 +39,44 @@ export default function MarvelComics() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [data.loading, data.error]); // Dependencies to manage listener re-attachment
 
-  const redirect=(id)=>{
+  const redirect = (id) => {
     navigate(`/singlecomic/${id}`)
   }
 
   return (
     <>
-    <h1>hellooooo</h1>
+
       {data?.error && <h1 className='App'>Error loading data</h1>}
-      <div>
-        <div className='container d-flex justify-content-center flex-wrap gap-3 w-full'>
-          {data?.data?.map((e, i) => (
-            <div className="mt-5" style={{ width: "18rem" }} key={i}>
-              <div className="comic-thumbnail">
-                <img
-                  className='card-img-top ratio'
-                  role='button'
-                  src={e?.thumbnail ? `${e?.thumbnail.path}.${e?.thumbnail.extension}` : null}
-                  alt={`${e?.title} Cover`}
-                  onClick={()=>redirect(e?.id)}
-                />
+      {
+        data.data.length === 0 ? (
+          <>
+           <div className='d-flex justify-content-center my-3'><div className="loader"></div></div>
+          <div style={{ height: "60vh" }}></div>
+          </>
+        ) : (
+          <div className='container d-flex justify-content-center flex-wrap gap-3 w-full comic-page'>
+            {data.data.map((e, i) => (
+              <div className="mt-5" style={{ width: "18rem" }} key={i}>
+                <div className="comic-thumbnail">
+                  <img
+                    className='card-img-top ratio'
+                    role='button'
+                    src={e?.thumbnail ? `${e?.thumbnail.path}.${e?.thumbnail.extension}` : null}
+                    alt={`${e?.title} Cover`}
+                    onClick={() => redirect(e?.id)}
+                  />
+                </div>
+                <div className="card-body pb-1 pt-2">
+                  <h6 className="card-title fw-bold">{e?.title}</h6>
+                </div>
               </div>
-              <div className="card-body pb-1 pt-2">
-                <h6 className="card-title fw-bold">{e?.title}</h6>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
+            ))}
+          </div>
+        )
+      }
+
       {/* <div className="loader"></div> */}
-      {data?.loading && <div className='d-flex justify-content-center my-3'>Loading...</div> }
+      {(data?.loading && data?.data.length !==0)&& <div className='d-flex justify-content-center my-3'>Loading...</div>}
     </>
   );
 }

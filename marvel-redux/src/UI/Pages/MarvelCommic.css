@@ -10,6 +10,7 @@
     border: 1px solid #ddd; /* Optional border */
     border-radius: 4px; /* Optional border-radius */
   }
+
   
   .comic-thumbnail img {
     position: absolute;
