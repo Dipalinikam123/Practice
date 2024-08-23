@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchComicData } from '../../Store/Action/action';
+import { fetchComicData } from '../../Store/actions/action';
 import { useNavigate } from "react-router";
 import './MarvelCommic.css';
+import { useAppDispatch, useAppSelector } from '../../mockServices/mock-hook/redux-hook';
 
 
 export default function MarvelComics() {
-  const data = useSelector((store) => store?.fetchApiReducer);
-  const dispatch = useDispatch();
+  const data = useAppSelector((store) => store?.fetchApiReducer);
+  const dispatch = useAppDispatch();
 
   console.log("--data-comic", data?.data);
   // Pagination state
@@ -45,13 +45,12 @@ export default function MarvelComics() {
 
   return (
     <>
-
       {data?.error && <h1 className='App'>Error loading data</h1>}
       {
         data.data.length === 0 ? (
           <>
-           <div className='d-flex justify-content-center my-3'><div className="loader"></div></div>
-          <div style={{ height: "60vh" }}></div>
+            <div className='d-flex justify-content-center my-3'><div className="loader"></div></div>
+            <div style={{ height: "60vh" }}></div>
           </>
         ) : (
           <div className='container d-flex justify-content-center flex-wrap gap-3 w-full comic-page'>
@@ -74,9 +73,7 @@ export default function MarvelComics() {
           </div>
         )
       }
-
-      {/* <div className="loader"></div> */}
-      {(data?.loading && data?.data.length !==0)&& <div className='d-flex justify-content-center my-3'>Loading...</div>}
+      {(data?.loading && data?.data.length !== 0) && <div className='d-flex justify-content-center my-3'>Loading...</div>}
     </>
   );
 }

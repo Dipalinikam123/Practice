@@ -4,7 +4,7 @@
   }
   
   .hero-section {
-    background: url('../Images/img2.jpg') no-repeat center center;
+    background: url('../../assets/Images/img2.jpg') no-repeat center center;
     background-size: cover;
     color: #fff;
     text-align: center;
@@ -18,7 +18,7 @@
     font-family: 'Bangers', cursive;
     font-size: 4rem;
     margin-bottom: 10px;
-    color:
+    
   }
   
   .hero-content p {

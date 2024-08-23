@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from "../Images/icon-mu-shield.png"
+import logo from "../../assets/Images/icon-mu-shield.png"
 
 import "./Header.css"
 export default function Header() {

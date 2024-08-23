@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSingleData } from "../../Store/Action/action"
+import { fetchSingleData } from "../../Store/actions/action"
 import { useNavigate } from "react-router";
 
 

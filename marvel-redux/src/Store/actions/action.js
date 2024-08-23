@@ -5,14 +5,12 @@ const hashKey = 'ab47f2dac9b62b45e88ef8605f5d3adb'
 
 // ---------------Fetching All Data -------------------------
 const fetchApiRequest = () => {
-    return {
-        type: 'FETCH_API_REQUEST'
-    }
+    return {type:'FETCH_API_REQUEST'}
 };
 
 const fetchApiSuccess = (data) => {
-    return {
-        type: 'FETCH_API_SUCCESS',
+    return { 
+        type:'FETCH_API_SUCCESS',
         payload: data
     }
 };
@@ -20,6 +18,44 @@ const fetchApiSuccess = (data) => {
 const fetchApiFailure = (error) => {
     return {
         type: 'FETCH_API_FAILURE',
+        error
+    }
+};
+// -------Fetching single commic page API ----------------------
+
+const fetchApiRequest2 = () => {
+    return {type: 'SINGLE_PAGE_REQUEST'}
+};
+
+const fetchApiSuccess2 = (data) => {
+    return {
+        type: 'SINGLE_PAGE_SUCCESS',
+        payload: data
+    }
+};
+
+const fetchApiFailure2 = (error) => {
+    return {
+        type: 'SINGLE_PAGE_FAILURE',
+        error
+    }
+};
+// -------Character page API ----------------------
+
+const fetchApiRequest3 = () => {
+    return {type: 'CHAR_PAGE_REQUEST'}
+};
+
+const fetchApiSuccess3 = (data) => {
+    return {
+        type: 'CHAR_PAGE_SUCCESS',
+        payload: data
+    }
+};
+
+const fetchApiFailure3 = (error) => {
+    return {
+        type: 'CHAR_PAGE_FAILURE',
         error
     }
 };
@@ -45,28 +81,7 @@ export const fetchComicData = (offset, limit) => {
     };
 };
 
-
 // -------Fetching single commic page API ----------------------
-
-const fetchApiRequest2 = () => {
-    return {
-        type: 'SINGLE_PAGE_REQUEST'
-    }
-};
-
-const fetchApiSuccess2 = (data) => {
-    return {
-        type: 'SINGLE_PAGE_SUCCESS',
-        payload: data
-    }
-};
-
-const fetchApiFailure2 = (error) => {
-    return {
-        type: 'SINGLE_PAGE_FAILURE',
-        error
-    }
-};
 
 // action.js
 export const fetchSingleData = (id) => {
@@ -81,5 +96,25 @@ export const fetchSingleData = (id) => {
       }
     };
   };
-  
 
+
+
+  export const fetchCharacterData = (offset,limit) => {
+    return async (dispatch) => {
+        dispatch(fetchApiRequest3());
+        const url = `https://gateway.marvel.com:443/v1/public/characters?limit=${limit}&offset=${offset}&apikey=${publicKey}&ts=${timeStamp}&hash=${hashKey}`;
+        
+        try {
+            const response = await fetch(url);
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const data = await response.json();
+            dispatch(fetchApiSuccess3(data?.data?.results));
+        } catch (error) {
+            dispatch(fetchApiFailure3(error));
+        }
+    };
+};

@@ -32,3 +32,8 @@
     font-size:12px;
     letter-spacing:1px;
   }
+  
+.carousel-indicators [data-bs-target] {
+  height: 11px;
+  width:32px
+}
