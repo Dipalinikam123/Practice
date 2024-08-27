@@ -46,7 +46,7 @@ export default function Section1() {
               key={index}
               className={`carousel-item ${index === 0 ? 'active' : ''}` }
             >
-              <img src={item.img} className="d-block  w-100" alt={`Slide ${index + 1}`} />
+              <img src={item.img} className="d-block w-100 animate__animated animate__fadeIn" alt={`Slide ${index + 1}`} />
               <div className="carousel-caption d-none d-md-block position-absolute text-start" style={{top:"35%"}}>
                 <div className="bg-transparent text-light px-4 py-1 border-div">{item?.btn}</div>
                 <p className="text-uppercase fs-2" style={{textWeight:"900"}}>{item.text}</p>

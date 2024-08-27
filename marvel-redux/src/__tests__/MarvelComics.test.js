@@ -1,20 +1,24 @@
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../mockServices/mock-hook/redux-hook';
-import MarvelComics from './MarvelComics';
-import { fetchComicData } from '../../Store/actions/action';
+import MarvelComics from '../UI/Pages/MarvelComics';
+import { useAppDispatch, useAppSelector } from '../mockServices/mock-hook/redux-hook';
+import { store } from '../Store/configureStore';
+import { fetchComicData } from '../Store/actions/action';
+
+const apiPath= { path: 'https://example.com/comic1', extension: 'jpg' }
+
 
 // Mock the hooks
 const mockDispatch = jest.fn();
 const mockSelector = jest.fn();
 
-jest.mock('../../mockServices/mock-hook/redux-hook', () => ({
+jest.mock('../mockServices/mock-hook/redux-hook', () => ({
   useAppDispatch: () => mockDispatch,
   useAppSelector: (selectorFn) => mockSelector(selectorFn),
 }));
 
 // Mock the fetchComicData action
-jest.mock('../../Store/actions/action', () => ({
+jest.mock('../Store/actions/action', () => ({
   fetchComicData: jest.fn(),
 }));
 
@@ -48,12 +52,12 @@ describe('MarvelComics Component', () => {
       {
         id: 1,
         title: 'Comic 1',
-        thumbnail: { path: 'https://example.com/comic1', extension: 'jpg' },
+        thumbnail: apiPath,
       },
       {
         id: 2,
         title: 'Comic 2',
-        thumbnail: { path: 'https://example.com/comic2', extension: 'jpg' },
+        thumbnail:apiPath,
       },
     ];
 
@@ -105,7 +109,7 @@ describe('MarvelComics Component', () => {
       {
         id: 1,
         title: 'Comic 1',
-        thumbnail: { path: 'https://example.com/comic1', extension: 'jpg' },
+        thumbnail: apiPath,
       },
     ];
 

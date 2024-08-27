@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchComicData } from '../../Store/actions/action';
 import { useNavigate } from "react-router";
 import './MarvelCommic.css';
+import { useDispatch, useSelector } from 'react-redux';
 import { useAppDispatch, useAppSelector } from '../../mockServices/mock-hook/redux-hook';
 
 
@@ -53,7 +54,7 @@ export default function MarvelComics() {
             <div style={{ height: "60vh" }}></div>
           </>
         ) : (
-          <div className='container d-flex justify-content-center flex-wrap gap-3 w-full comic-page'>
+          <div className='container d-flex justify-content-center flex-wrap gap-3 w-full comic-page '>
             {data.data.map((e, i) => (
               <div className="mt-5" style={{ width: "18rem" }} key={i}>
                 <div className="comic-thumbnail">

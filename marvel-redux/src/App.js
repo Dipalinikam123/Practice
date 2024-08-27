@@ -9,14 +9,22 @@ import About from './UI/Pages/About';
 import Contact from './UI/Pages/Contact';
 import SinglePage from './UI/Pages/SinglePage';
 import Footer from './UI/Componant/Footer';
+import { Provider } from 'react-redux';
+import { store } from './Store/configureStore';
+import LoginForm from './UI/Forms/LoginForm';
 // import MarvelCommics from './UI/Pages/MarvelComics';
 
 // Lazy load the MarvelCommic component
 const MarvelComics = lazy(() => import('./UI/Pages/MarvelComics'));
 
+
+
+
+
 function App() {
   return (
     <div>
+      <Provider store={store}>
       <BrowserRouter>
         <Header/>
         <NavBar/>
@@ -34,9 +42,11 @@ function App() {
             }
           />
           <Route path='/singlecomic/:id' element={<SinglePage/>}/>
+          <Route path='/login' element={<LoginForm/>}/>
         </Routes>
         <Footer/>
       </BrowserRouter>
+      </Provider>
     </div>
   );
 }
