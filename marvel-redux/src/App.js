@@ -1,6 +1,6 @@
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useState } from "react";
 import Header from './UI/Componant/Header';
 import NavBar from './UI/Componant/NavBar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -16,10 +16,6 @@ import LoginForm from './UI/Forms/LoginForm';
 
 // Lazy load the MarvelCommic component
 const MarvelComics = lazy(() => import('./UI/Pages/MarvelComics'));
-
-
-
-
 
 function App() {
   return (

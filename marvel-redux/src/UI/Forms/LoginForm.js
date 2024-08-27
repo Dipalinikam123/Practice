@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function LoginForm() {
+export default function LoginForm({toggle}) {
     const [loginUser, setLoginUser] = useState({
         email: "",
         password: ""
