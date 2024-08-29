@@ -3,12 +3,11 @@ import { fetchComicData } from '../../Store/actions/action';
 import { useNavigate } from "react-router";
 import './MarvelCommic.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { useAppDispatch, useAppSelector } from '../../mockServices/mock-hook/redux-hook';
 
 
 export default function MarvelComics() {
-  const data = useAppSelector((store) => store?.fetchApiReducer);
-  const dispatch = useAppDispatch();
+  const data = useSelector((store) => store?.fetchApiReducer);
+  const dispatch = useDispatch();
 
   console.log("--data-comic", data?.data);
   // Pagination state
@@ -54,12 +53,12 @@ export default function MarvelComics() {
             <div style={{ height: "60vh" }}></div>
           </>
         ) : (
-          <div className='container d-flex justify-content-center flex-wrap gap-3 w-full comic-page '>
+          <div className='container-lg row row-cols-2 row-cols-md-4 row-cols-lg-5 d-flex justify-content-center flex-wrap m-auto w-full comic-page '>
             {data.data.map((e, i) => (
-              <div className="mt-5" style={{ width: "18rem" }} key={i}>
-                <div className="comic-thumbnail">
+              <div className="mt-5"   key={i}>
+                <div className="comic-thumbnail" >
                   <img
-                    className='card-img-top ratio'
+                    className='card-img-top ratio '
                     role='button'
                     src={e?.thumbnail ? `${e?.thumbnail.path}.${e?.thumbnail.extension}` : null}
                     alt={`${e?.title} Cover`}
@@ -67,7 +66,7 @@ export default function MarvelComics() {
                   />
                 </div>
                 <div className="card-body pb-1 pt-2">
-                  <h6 className="card-title fw-bold">{e?.title}</h6>
+                  <h6 className="card-title fw-bold text-truncate">{e?.title}</h6>
                 </div>
               </div>
             ))}

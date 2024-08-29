@@ -1,4 +1,4 @@
-import { fetchApi } from "../../Constant/api-config";
+import { BaseUrl, fetchApi } from "../../api-config";
 
 const publicKey = 'caa605ac9607a904ac4277866f4bbb23'
 const timeStamp = '1723536781813'
@@ -65,7 +65,7 @@ export const fetchComicData = (offset, limit) => {
     return async (dispatch) => {
         dispatch(fetchApiRequest());
 
-        const url = `${fetchApi}/comics?limit=${limit}&offset=${offset}&apikey=${publicKey}&ts=${timeStamp}&hash=${hashKey}`;
+        const url = `${BaseUrl}/comics?limit=${limit}&offset=${offset}&apikey=${publicKey}&ts=${timeStamp}&hash=${hashKey}`;
         
         try {
             const response = await fetch(url);
@@ -89,7 +89,7 @@ export const fetchSingleData = (id) => {
     return async (dispatch) => {
       dispatch(fetchApiRequest2());
       try {
-        const response = await fetch(`${fetchApi}/comics/${id}?apikey=${publicKey}&ts=${timeStamp}&hash=${hashKey}`);
+        const response = await fetch(`${BaseUrl}/comics/${id}?apikey=${publicKey}&ts=${timeStamp}&hash=${hashKey}`);
         const data = await response.json();
         dispatch(fetchApiSuccess2(data.data.results));
       } catch (error) {
@@ -103,7 +103,7 @@ export const fetchSingleData = (id) => {
   export const fetchCharacterData = (offset,limit) => {
     return async (dispatch) => {
         dispatch(fetchApiRequest3());
-        const url = `${fetchApi}/characters?limit=${limit}&offset=${offset}&apikey=${publicKey}&ts=${timeStamp}&hash=${hashKey}`;
+        const url = `${BaseUrl}/characters?limit=${limit}&offset=${offset}&apikey=${publicKey}&ts=${timeStamp}&hash=${hashKey}`;
         
         try {
             const response = await fetch(url);

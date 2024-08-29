@@ -16,7 +16,7 @@ const Footer = () => {
                
                     <Col md={2}>
                         <h5>About Marvel</h5>
-                        <ListGroup variant="flush">
+                        <ListGroup variant="flush" md={2}>
                             <ListGroup.Item className="bg-black border-0">
                                 <a href="#!" className="text-light">Help/FAQs</a>
                             </ListGroup.Item>

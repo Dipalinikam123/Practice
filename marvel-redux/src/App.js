@@ -18,11 +18,15 @@ import LoginForm from './UI/Forms/LoginForm';
 const MarvelComics = lazy(() => import('./UI/Pages/MarvelComics'));
 
 function App() {
+
+  const [modal, setModal] = useState(false);
+    
+    const toggle = () => setModal(!modal);
   return (
     <div>
       <Provider store={store}>
       <BrowserRouter>
-        <Header/>
+        <Header modal={modal} toggle={toggle}/>
         <NavBar/>
         <Routes>
           <Route path='/' element={<Home/>}/>
@@ -38,7 +42,7 @@ function App() {
             }
           />
           <Route path='/singlecomic/:id' element={<SinglePage/>}/>
-          <Route path='/login' element={<LoginForm/>}/>
+          <Route path='/login' element={<LoginForm setModal={setModal}/>}/>
         </Routes>
         <Footer/>
       </BrowserRouter>

@@ -4,7 +4,7 @@ import "./Header.css"
 import Register from '../Modal/Register';
 import 'animate.css';
 import { useNavigate } from 'react-router-dom';
-export default function Header() {
+export default function Header({ modal, toggle }) {
 
     const [user, setUser] = useState({
         firstName: "",
@@ -15,9 +15,7 @@ export default function Header() {
     const [allUsers, setAllUsers] = useState([]);
     const [loginUser, setLoginUser] = useState({});
     const [flag, setFlag] = useState(false);
-    const [modal, setModal] = useState(false);
-    
-    const toggle = () => setModal(!modal);
+    const [errors, setErrors] = useState({})
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -31,7 +29,7 @@ export default function Header() {
         if (storedLoginUserData2) {
             setLoginUser(JSON.parse(storedLoginUserData2));
         }
-    }, [modal,loginUser]);
+    }, [modal, flag, navigate]);
 
     //------------------- onchange -------------------
 
@@ -40,9 +38,30 @@ export default function Header() {
     };
 
     //---------------submit button-------------------
+    const validate = () => {
+        let errors = {};
+        if (!user.firstName) errors.firstName = 'First name is required';
+        if (!user.lastName) errors.lastName = 'Last name is required';
+        if (!user.email) {
+            errors.email = 'Email is required';
+        } else if (!/\S+@\S+\.\S+/.test(user.email)) {
+            errors.email = 'Email address is invalid';
+        }
+        if (!user.password) errors.password = 'Password is required';
+        if (user.password && user.password.length < 6) {
+            errors.password = 'Password must be at least 6 characters long';
+        }
+        return errors;
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const validationErrors = validate();
+        if (Object.keys(validationErrors).length === 0) {
+            handleSubmit();
+        } else {
+            setErrors(validationErrors);
+        }
 
         // Check if user already exists
         const existingUser = allUsers.find(u => u.email === user.email);
@@ -87,8 +106,8 @@ export default function Header() {
     console.log("---logn", loginUser)
     return (
         <>
-            <Register modal={modal} toggle={toggle} user={user} handleChange={handleChange} handleSubmit={handleSubmit} />
-            <div className='bg-dark text-light w-100 position-sticky'>
+            <Register modal={modal} toggle={toggle} user={user} handleChange={handleChange} handleSubmit={handleSubmit} errors={errors} />
+            <div className='bg-dark text-light w-100 '>
                 <div className="container">
                     <div className="row">
                         <div className="col pt-2">
@@ -100,16 +119,36 @@ export default function Header() {
                                 }
                             </div>
                             {/* --------offcanvas---------- */}
-                            <button className="btn btn-primary d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">##</button>
 
-                            <div className="offcanvas offcanvas-start d-md-none bg-black text-light z-1" tabIndex="-1"
-                                id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                                <div className="offcanvas-header d-md-none text-light">
+                            <button className="btn btn-dark d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <div
+                                className="offcanvas offcanvas-start d-md-none"
+                                tabIndex="-1"
+                                id="offcanvasRight"
+                                aria-labelledby="offcanvasRightLabel">
+                                <div className="offcanvas-header d-md-none">
                                     <h5 id="offcanvasRightLabel">Offcanvas right</h5>
-                                    <button type="button" className="btn-close text-reset bg-light" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                    <button
+                                        type="button"
+                                        className="btn-close text-reset "
+                                        data-bs-dismiss="offcanvas"
+                                        aria-label="Close"
+                                    ></button>
                                 </div>
-                                <div className="offcanvas-body">
-                                    gfjhnof;hbjo
+                                <div className="offcanvas-body bg-light h-50 bg-dark text-light">
+                                    <p role='button' data-bs-dismiss="offcanvas" onClick={() => navigate('/')}>Home</p>
+                                    <p role='button' data-bs-dismiss="offcanvas" onClick={() => navigate('/comic')}>Comic</p>
+                                    <p role='button' data-bs-dismiss="offcanvas" onClick={() => navigate('/about')}>About</p>
+                                    <p role='button' data-bs-dismiss="offcanvas" onClick={() => navigate('/contact')}>Contact</p>
+                                    <div className=''>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65.6 66.7" className="small-svg me-2"><path fillRule="evenodd" d="M59.5 15.1L53 51.4c0 .4-.3.6-.6.6h-6.5c-.3 0-.6-.2-.8-.6l-8.8-24.7H36l-4.3 24.7c-.1.3-.3.6-.6.6H25c-.3 0-.6-.2-.5-.6l6.6-37.3c.1-.3.3-.6.6-.6h6.4c.5 0 .7.2.8.6l8.8 24.7h.3l5.5-30.4C47.9 3.7 40.6.9 32.7.9 14.7.9.2 15.5.2 33.4c0 8.8 3.5 16.7 9.1 22.5l7.3-41.7c.1-.3.3-.6.6-.6H24c.3 0 .5.2.5.6l-8.3 47.2c4.8 2.8 10.4 4.5 16.4 4.5 17.9 0 32.5-14.5 32.5-32.5 0-6.8-2.1-13.1-5.6-18.3z"></path></svg>
+                                        {Object.keys(loginUser).length === 0 ? <span role='button'  data-bs-dismiss="offcanvas" onClick={toggle}>User</span> : <span role='button' onClick={() => setFlag(!flag)}>{loginUser.firstName}</span>}
+                                        {
+                                            flag && <div className=' animate__animated animate__fadeIn border rounded  px-2 mt-2 position-absolute top-2 bg-black' role='button' onClick={logOutHandler}>LogOut</div>
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -132,7 +171,6 @@ export default function Header() {
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </>
