@@ -6,17 +6,17 @@ const Footer = () => {
     return (
         <footer className="bg-black text-light py-4">
             <Container>
-                <Row className=" mb-4 mt-3">
-                    <Col className="d-flex justify-content-center" md={2}>
+                <Row className="mb-4 mt-3">
+                    <Col className="d-flex justify-content-center" xs={6} md={2}>
                         <svg viewBox="0 0 36 52" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" width="100" height="100">
                             <rect fill="#EC1D24" width="100%" height="100%"></rect>
                             <path fill="#FEFEFE" d="M31.5 48V4H21.291l-3.64 22.735L14.102 4H4v44h8V26.792L15.577 48h4.229l3.568-21.208V48z"></path>
                         </svg>
                     </Col>
-               
-                    <Col md={2}>
+
+                    <Col xs={6} md={3} className='text-center mb-4'>
                         <h5>About Marvel</h5>
-                        <ListGroup variant="flush" md={2}>
+                        <ListGroup variant="flush">
                             <ListGroup.Item className="bg-black border-0">
                                 <a href="#!" className="text-light">Help/FAQs</a>
                             </ListGroup.Item>
@@ -31,8 +31,8 @@ const Footer = () => {
                             </ListGroup.Item>
                         </ListGroup>
                     </Col>
-                   
-                    <Col md={3}>
+
+                    <Col xs={6} md={3} className='text-center'>
                         <h5>Follow Marvel</h5>
                         <Nav className="flex-column fs-6">
                             <Nav.Link href="#!" className="text-light">Facebook</Nav.Link>
@@ -41,9 +41,10 @@ const Footer = () => {
                             <Nav.Link href="#!" className="text-light">YouTube</Nav.Link>
                         </Nav>
                     </Col>
-                    <Col md={3}>
+                    
+                    <Col xs={6} md={3} className='text-center'>
                         <h5>Marvel Insider</h5>
-                        <p>Get Rewarded for Being a Marvel Fan</p>
+                        <p >Get Rewarded for Being a Marvel Fan</p>
                         <ListGroup variant="flush" className="fs-6">
                             <ListGroup.Item className="bg-black border-0">
                                 <a href="#!" className="text-light">Redeem Digital Comics</a>
@@ -54,6 +55,7 @@ const Footer = () => {
                         </ListGroup>
                     </Col>
                 </Row>
+
                 <Row className="mt-3">
                     <Col className="text-center">
                         <p className="mb-0">&copy; {new Date().getFullYear()} Marvel Entertainment, LLC</p>
