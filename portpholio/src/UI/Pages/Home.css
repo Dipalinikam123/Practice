@@ -1,0 +1,78 @@
+
+.img-box {
+  width: 100%;
+  max-width: 442px;
+  height: auto;
+  border-radius: 6px;
+  margin: 0 auto;
+  padding: 0;
+  /* border: 8px solid #ECF0F3; */
+  box-sizing: border-box;
+  text-align: center;
+  /* box-shadow: 20px 20px 40px #5e5d5d69, inset -20px -20px 10px rgba(255, 255, 255, 0.246); */
+   } 
+
+.img-box img {
+  /* width: 100%;
+  height: auto; */
+  object-fit: contain;
+  border-radius: 6px;
+  filter: drop-shadow(5px 5px 10px #555);
+
+}
+.box1{
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:#ECF0F3 ;
+  box-shadow: rgba(213, 213, 214, 0.603) 3px 3px 11px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px,rgb(182, 194, 204) 6px 6px 14px 0px,white -3px -3px 6px 1px;
+  /* box-shadow: 20px 20px 40px #5e5d5d69, inset -20px -20px 10px rgba(255, 255, 255, 0.246); */
+}
+.icon-box{
+  height: 180px;
+}
+.box1:hover{
+  box-shadow: unset;
+  transition: 1s;
+  transform: translateY(-0.5rem);
+  background-image: repeating-linear-gradient(70deg, hsla(64,83%,54%,0.05) 0px, hsla(64,83%,54%,0.05) 1px,transparent 1px, transparent 11px,hsla(64,83%,54%,0.05) 11px, hsla(64,83%,54%,0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(115deg, hsla(64,83%,54%,0.05) 0px, hsla(64,83%,54%,0.05) 1px,transparent 1px, transparent 11px,hsla(64,83%,54%,0.05) 11px, hsla(64,83%,54%,0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(25deg, hsla(64,83%,54%,0.05) 0px, hsla(64,83%,54%,0.05) 1px,transparent 1px, transparent 11px,hsla(64,83%,54%,0.05) 11px, hsla(64,83%,54%,0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(160deg, hsla(64,83%,54%,0.05) 0px, hsla(64,83%,54%,0.05) 1px,transparent 1px, transparent 11px,hsla(64,83%,54%,0.05) 11px, hsla(64,83%,54%,0.05) 12px,transparent 12px, transparent 32px),linear-gradient(115deg, rgb(41, 27, 158),rgb(249, 77, 212));
+}
+.box1 a {
+  color: black; /* Default link color */
+  text-decoration: none; /* Remove underline from links */
+  background-color: transparent;
+  
+}
+.box1:hover a{
+  color:white;
+}
+
+p {
+  font-size: 1.5rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+@media (min-width: 320px) and (max-width: 425px) {
+  p {
+      font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 426px) and (max-width: 767px) {
+  p {
+      font-size: 1.6rem;
+      text-align: center;
+  }
+}
+
+@media (min-width: 768px) {
+  p {
+      font-size: 2.2rem;
+  }
+}
