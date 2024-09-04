@@ -1,0 +1,33 @@
+.project-box {
+    height: 230px;    
+    cursor: pointer;
+    border-radius: 6px;
+    align-items: center;
+    background-color: #ECF0F3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        rgba(250, 250, 255, 0.603) 6px 6px 14px 10px inset, 
+        rgba(255, 255, 255, 0.5) -3px -3px 6px 1px, 
+        rgb(182, 194, 204) 6px 6px 14px 0px, 
+        rgb(171, 181, 189) 6px 6px 14px 0px inset, 
+        white -3px -3px 6px 1px;
+        transition: all 0.5s ease;
+        font-size: 38px;
+       
+        font-weight: bolder;
+        /* font-style: normal; */
+      }
+      .project-box p{
+        font-size: 17px;
+      } 
+      .project-box a{
+        font-family: "Great Vibes", cursive;  
+        font-weight: bolder;   
+        cursor: pointer; 
+    } 
+    /* .project-box:hover{
+      background-image: url('../../assets/girl.png');
+    } */
