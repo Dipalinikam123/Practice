@@ -1,5 +1,7 @@
 import './App.css';
 import "bootstrap/dist/css/bootstrap.min.css";
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 import 'animate.css';
 import Navbar from './UI/Componant/Navbar';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
@@ -116,7 +118,7 @@ const App = () => {
             <Route path='/about' element={<About />} />
             <Route path='/education' element={<Education />} />
             <Route path='/project' element={<Project />} />
-            {/* <Route path='/contact' element={<Contact/>}/> */}
+            <Route path='/contact' element={<Contact/>}/>
           </Routes>
         </BrowserRouter>
       </div>

@@ -8,12 +8,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    box-shadow: 
-        rgba(250, 250, 255, 0.603) 6px 6px 14px 10px inset, 
-        rgba(255, 255, 255, 0.5) -3px -3px 6px 1px, 
-        rgb(182, 194, 204) 6px 6px 14px 0px, 
-        rgb(171, 181, 189) 6px 6px 14px 0px inset, 
-        white -3px -3px 6px 1px;
+    box-shadow: rgba(213, 213, 214, 0.603) 3px 3px 11px 0px inset, white -3px -3px 6px 1px,rgb(182, 194, 204) 6px 6px 14px 0px,rgba(255, 255, 255, 0.774) -5px -5px 6px 1px inset;
+
         transition: all 0.5s ease;
         font-size: 38px;
        
@@ -28,6 +24,17 @@
         font-weight: bolder;   
         cursor: pointer; 
     } 
-    /* .project-box:hover{
-      background-image: url('../../assets/girl.png');
-    } */
+    .project-box:hover  {
+      background-image: repeating-linear-gradient(70deg, hsla(0, 0%, 69%, 0.192) 0px, hsla(90, 1%, 27%, 0.158) 1px,transparent 1px, transparent 11px,hsla(0, 2%, 32%, 0.205) 11px, hsla(60, 3%, 15%, 0.144) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(115deg, hsla(60, 4%, 25%, 0.05) 0px, hsla(0, 0%, 23%, 0.05) 1px,transparent 1px, transparent 11px,hsla(60, 4%, 17%, 0.05) 11px, hsla(67, 49%, 7%, 0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(25deg, hsla(64,83%,54%,0.05) 0px, hsla(64,83%,54%,0.05) 1px,transparent 1px, transparent 11px,hsla(64,83%,54%,0.05) 11px, hsla(64,83%,54%,0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(160deg, hsla(64,83%,54%,0.05) 0px, hsla(64,83%,54%,0.05) 1px,transparent 1px, transparent 11px,hsla(64,83%,54%,0.05) 11px, hsla(64,83%,54%,0.05) 12px,transparent 12px, transparent 32px),linear-gradient(115deg, rgb(41, 27, 158),rgb(249, 77, 212));
+
+      /* width: 200px; */
+      /* height: 230px; */
+      border-radius: 15px;
+      transition: all 0.5s;
+    }
+    .project-box a{
+      color: black;
+    }
+    .project-box:hover a {
+      color: white;
+    }

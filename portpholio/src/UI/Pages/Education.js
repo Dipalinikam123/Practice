@@ -1,5 +1,5 @@
     import React from 'react';
-    import './education.css'; // Import the CSS file
+    import './Education.css'; // Import the CSS file
 
     export default function Education() {
 

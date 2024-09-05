@@ -29,7 +29,7 @@
   justify-content: center;
   align-items: center;
   background-color:#ECF0F3 ;
-  box-shadow: rgba(213, 213, 214, 0.603) 3px 3px 11px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px,rgb(182, 194, 204) 6px 6px 14px 0px,white -3px -3px 6px 1px;
+  box-shadow: rgba(213, 213, 214, 0.603) 3px 3px 11px 0px inset, white -3px -3px 6px 1px,rgb(182, 194, 204) 6px 6px 14px 0px,rgba(255, 255, 255, 0.774) -5px -5px 6px 1px inset;
   /* box-shadow: 20px 20px 40px #5e5d5d69, inset -20px -20px 10px rgba(255, 255, 255, 0.246); */
 }
 .icon-box{
@@ -37,8 +37,8 @@
 }
 .box1:hover{
   box-shadow: unset;
-  transition: 1s;
-  transform: translateY(-0.5rem);
+  transition: 1s !important;
+  transform: translateY(-10px) !important;
   background-image: repeating-linear-gradient(70deg, hsla(64,83%,54%,0.05) 0px, hsla(64,83%,54%,0.05) 1px,transparent 1px, transparent 11px,hsla(64,83%,54%,0.05) 11px, hsla(64,83%,54%,0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(115deg, hsla(64,83%,54%,0.05) 0px, hsla(64,83%,54%,0.05) 1px,transparent 1px, transparent 11px,hsla(64,83%,54%,0.05) 11px, hsla(64,83%,54%,0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(25deg, hsla(64,83%,54%,0.05) 0px, hsla(64,83%,54%,0.05) 1px,transparent 1px, transparent 11px,hsla(64,83%,54%,0.05) 11px, hsla(64,83%,54%,0.05) 12px,transparent 12px, transparent 32px),repeating-linear-gradient(160deg, hsla(64,83%,54%,0.05) 0px, hsla(64,83%,54%,0.05) 1px,transparent 1px, transparent 11px,hsla(64,83%,54%,0.05) 11px, hsla(64,83%,54%,0.05) 12px,transparent 12px, transparent 32px),linear-gradient(115deg, rgb(41, 27, 158),rgb(249, 77, 212));
 }
 .box1 a {
@@ -56,10 +56,11 @@
   font-weight: 700;
 }
 .text-box p {
-  font-size: 50px;
   line-height: 1.2;
-  margin-bottom: 1rem;
   font-weight: bold;
+}
+.home-text{
+  font-size: 18px;
 }
 
 @media (min-width: 320px) and (max-width: 425px) {
