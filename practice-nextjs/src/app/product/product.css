@@ -1,0 +1,25 @@
+.main-div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:40px;
+    padding:20px
+
+}
+.card-div{
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 20px 10px;
+    width: 300px;
+    height:auto
+}
+.card-div img{
+    width: 200px;
+    object-fit: contain;
+    aspect-ratio: 3/2;
+}
+.card-div p{
+    white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

@@ -1,0 +1,28 @@
+.card-div2{
+    width: 80%;
+    text-align: center;
+    /* border: 1px solid black; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin:50px auto;
+}
+
+.card-div2 button{
+    margin-bottom: 20px;
+    padding: 5px 10px;
+}
+.card-div2 img{
+    width: 300px;
+    object-fit: contain;
+}
+.text-m{
+    margin-bottom: 15px;
+}
+.gold-stars {
+    color: gold; /* Apply gold color to the stars */
+    font-size: 24px; /* Adjust the size of the stars as needed */
+  }
+  
