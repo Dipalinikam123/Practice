@@ -2,7 +2,16 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 import { useRouter } from "next/navigation";
+import {Roboto} from 'next/font/google'
 
+
+  //font optimizing
+  const roboto= Roboto({
+    weight:'400',
+    subsets:['latin'],
+    display: 'swap'
+  })
+  
 export default function Home() {
   const router = useRouter();
 
@@ -11,7 +20,7 @@ export default function Home() {
   // }
   return (
     <div className={styles.page}>
-      <h2>Basic Routing</h2>
+      <h2 className={roboto.className}>Basic Routing</h2> 
       <div className={styles.main}>
         <Link href="/login">
          Login

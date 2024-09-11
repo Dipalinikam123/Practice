@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-
 import "./ProductDeatil.css";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function ProductDetail(params) {
   console.log("--params", params?.params?.product);
@@ -45,7 +45,9 @@ export default function ProductDetail(params) {
     <div>
       <div className="card-div2">
         <button onClick={()=>router.push('/product')}>Back To Home</button>
-        <img className="text-m" src={singleProduct?.image} alt={singleProduct?.title} />
+        {/* <img className="text-m" src={singleProduct?.image} alt={singleProduct?.title} /> */}
+        {/* image optimization */}
+        <Image src={singleProduct?.image} width={300} height={300}/>
         <div className="text-div">
           <p className="text-m">Title: {singleProduct?.title}</p>
           <p className="text-m">Price: ${singleProduct?.price}</p>

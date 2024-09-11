@@ -1,0 +1,94 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "Introduction to Music Theory",
+      "slug": "introduction-to-music-theory",
+      "description": "Learn the basics of music theory, including scales, chords, and harmony. Perfect for beginners who want to understand the foundational elements of music.",
+      "price": 49.99,
+      "instructor": "Jane Smith",
+      "isFeatured": true,
+      "image": "https://example.com/images/music-theory.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Advanced Piano Techniques",
+      "slug": "advanced-piano-techniques",
+      "description": "Dive deep into advanced piano techniques, including finger exercises, complex rhythms, and improvisation. Designed for intermediate to advanced pianists.",
+      "price": 79.99,
+      "instructor": "John Doe",
+      "isFeatured": false,
+      "image": "https://example.com/images/advanced-piano.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Guitar Mastery: From Beginner to Pro",
+      "slug": "guitar-mastery-from-beginner-to-pro",
+      "description": "Transform your guitar skills with this comprehensive course that covers everything from basic chords to advanced solos. Ideal for all levels of guitarists.",
+      "price": 59.99,
+      "instructor": "Emily Davis",
+      "isFeatured": true,
+      "image": "https://example.com/images/guitar-mastery.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Music Production Basics",
+      "slug": "music-production-basics",
+      "description": "Get started with music production with this course that covers the essentials of recording, mixing, and mastering music. Perfect for aspiring music producers.",
+      "price": 69.99,
+      "instructor": "Michael Brown",
+      "isFeatured": false,
+      "image": "https://example.com/images/music-production.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Vocal Training for All Levels",
+      "slug": "vocal-training-for-all-levels",
+      "description": "Enhance your vocal skills with exercises and techniques that cater to all levels. Improve your range, tone, and technique with professional guidance.",
+      "price": 54.99,
+      "instructor": "Sarah Johnson",
+      "isFeatured": true,
+      "image": "https://example.com/images/vocal-training.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Jazz Improvisation Techniques",
+      "slug": "jazz-improvisation-techniques",
+      "description": "Explore the art of jazz improvisation with techniques and exercises to enhance your spontaneous performance skills. Suitable for intermediate to advanced musicians.",
+      "price": 89.99,
+      "instructor": "David Lee",
+      "isFeatured": true,
+      "image": "https://example.com/images/jazz-improvisation.jpg"
+    },
+    {
+      "id": 7,
+      "title": "Electronic Music Production",
+      "slug": "electronic-music-production",
+      "description": "Learn to produce electronic music from scratch with a focus on beat-making, sound design, and arrangement. Ideal for aspiring electronic music producers.",
+      "price": 99.99,
+      "instructor": "Laura White",
+      "isFeatured": false,
+      "image": "https://example.com/images/electronic-music.jpg"
+    },
+    {
+      "id": 8,
+      "title": "Songwriting Essentials",
+      "slug": "songwriting-essentials",
+      "description": "Master the art of songwriting with techniques for crafting lyrics, melodies, and chord progressions. Perfect for aspiring songwriters and musicians.",
+      "price": 64.99,
+      "instructor": "Kevin Brown",
+      "isFeatured": true,
+      "image": "https://example.com/images/songwriting.jpg"
+    },
+    {
+      "id": 9,
+      "title": "Music Theory for Composers",
+      "slug": "music-theory-for-composers",
+      "description": "Deepen your understanding of music theory with a focus on composition techniques, harmony, and form. Aimed at composers looking to refine their skills.",
+      "price": 74.99,
+      "instructor": "Jessica Turner",
+      "isFeatured": false,
+      "image": "https://example.com/images/music-theory-composers.jpg"
+    }
+  ]
+}
