@@ -8,7 +8,7 @@
       "price": 49.99,
       "instructor": "Jane Smith",
       "isFeatured": true,
-      "image": "https://example.com/images/music-theory.jpg"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTR_Bc8Pt-gdeAs_SDA58BAQXc2rMQhq54oHg&s"
     },
     {
       "id": 2,
@@ -18,7 +18,7 @@
       "price": 79.99,
       "instructor": "John Doe",
       "isFeatured": false,
-      "image": "https://example.com/images/advanced-piano.jpg"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFI9wv-gqC0iI-lnoGEgv_RKvoFaS16PCZFA&s"
     },
     {
       "id": 3,
@@ -28,7 +28,7 @@
       "price": 59.99,
       "instructor": "Emily Davis",
       "isFeatured": true,
-      "image": "https://example.com/images/guitar-mastery.jpg"
+      "image": "https://duzkllvo0lb75.cloudfront.net/wp-content/uploads/2016/08/MUSIC-COURSE.jpg"
     },
     {
       "id": 4,
@@ -38,7 +38,7 @@
       "price": 69.99,
       "instructor": "Michael Brown",
       "isFeatured": false,
-      "image": "https://example.com/images/music-production.jpg"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ--N-owlRyQ66tDG3ClMi7rgwapkrxvsGwRQ&s"
     },
     {
       "id": 5,
@@ -48,7 +48,7 @@
       "price": 54.99,
       "instructor": "Sarah Johnson",
       "isFeatured": true,
-      "image": "https://example.com/images/vocal-training.jpg"
+      "image": "https://sonicfield.in/wp-content/uploads/2022/04/Music-Production-course-768x439.png"
     },
     {
       "id": 6,
@@ -58,7 +58,7 @@
       "price": 89.99,
       "instructor": "David Lee",
       "isFeatured": true,
-      "image": "https://example.com/images/jazz-improvisation.jpg"
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVpjH3GKvoyN8berMkrZB5E_Xd6GZVixObN4B2zvwrO7_Mds2DwTCMyuZlqRWlYPuyHTY&usqp=CAU"
     },
     {
       "id": 7,
@@ -68,7 +68,7 @@
       "price": 99.99,
       "instructor": "Laura White",
       "isFeatured": false,
-      "image": "https://example.com/images/electronic-music.jpg"
+      "image": "https://angelsmusicacademy.com/wp-content/uploads/2024/01/indian-classical-1024x512.jpg"
     },
     {
       "id": 8,
@@ -78,7 +78,7 @@
       "price": 64.99,
       "instructor": "Kevin Brown",
       "isFeatured": true,
-      "image": "https://example.com/images/songwriting.jpg"
+      "image": "https://images.squarespace-cdn.com/content/v1/59cff91532601e11ca5d8f27/1709944663239-XIN4E8Y195R1PHEKDD9Y/15-week+course+3.jpg?format=1500w"
     },
     {
       "id": 9,
@@ -88,7 +88,17 @@
       "price": 74.99,
       "instructor": "Jessica Turner",
       "isFeatured": false,
-      "image": "https://example.com/images/music-theory-composers.jpg"
+      "image": "https://www.kunion.ed.jp/_images/en/photo-2.jpg"
+    },
+    {
+      "id": 10,
+      "title": "Jazz Improvisation Techniques",
+      "slug": "jazz-improvisation-techniques",
+      "description": "Explore the art of jazz improvisation with techniques and exercises to enhance your spontaneous performance skills. Suitable for intermediate to advanced musicians.",
+      "price": 89.99,
+      "instructor": "David Lee",
+      "isFeatured": true,
+      "image": "https://hub.yamaha.com/images/easyblog_articles/84/b2ap3_large_intlband3crop1k.jpg"
     }
   ]
 }

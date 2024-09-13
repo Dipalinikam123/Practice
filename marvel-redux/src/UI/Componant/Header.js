@@ -117,7 +117,7 @@ export default function Header({ modal, toggle }) {
                     <div className="row align-items-center justify-content-between">
                         <div className="col pt-2">
                             <div className='d-none d-md-block'>
-                                <img src={inlogo} width={19} height={19} className='bg-light rounded me-2'/>
+                                <img src={inlogo} width={19} height={19} className='bg-light rounded me-2' alt="not-found"/>
                                 {Object.keys(loginUser).length === 0 ? <span role='button' onClick={toggle}>User</span> : <span role='button' onClick={() => setFlag(!flag)}>{loginUser.firstName}</span>}
                                 {
                                     flag && <div className=' animate__animated animate__fadeIn border rounded  px-2 mt-2 position-absolute top-2 bg-black' role='button' onClick={logOutHandler}>LogOut</div>
@@ -134,8 +134,8 @@ export default function Header({ modal, toggle }) {
                                 id="offcanvasRight"
                                 aria-labelledby="offcanvasRightLabel">
                                 <div className="offcanvas-header d-md-none bg-dark">
-                                    <img id="offcanvasRightLabel" className="icon--svg icon--svg mvl-animated-logo" aria-hidden="true" src={Mlogo}/>
-                                    <a href="#" type="button"
+                                    <img id="offcanvasRightLabel" className="icon--svg icon--svg mvl-animated-logo" aria-hidden="true" src={Mlogo} alt="not-found"/>
+                                    <a href="#/" type="button"
                                         className="link-light"
                                         data-bs-dismiss="offcanvas"
                                         aria-label="Close"
@@ -152,7 +152,7 @@ export default function Header({ modal, toggle }) {
                                     <p role='button' data-bs-dismiss="offcanvas" onClick={() => navigate('/about')}>About</p>
                                     <p role='button' data-bs-dismiss="offcanvas" onClick={() => navigate('/contact')}>Contact</p>
                                     <div className=''>
-                                    <img src={inlogo} width={18} height={18} className='bg-light rounded me-2'/>
+                                    <img src={inlogo} width={18} height={18} className='bg-light rounded me-2' alt="not-found"/>
                                         {Object.keys(loginUser).length === 0 ? <span role='button' data-bs-dismiss="offcanvas" onClick={toggle}>User</span> : <span role='button' onClick={() => setFlag(!flag)}>{loginUser.firstName}</span>}
                                         {
                                             flag && <div className=' animate__animated animate__fadeIn border rounded  px-2 mt-2 position-absolute top-2 bg-black' role='button' onClick={logOutHandler}>LogOut</div>
@@ -164,7 +164,7 @@ export default function Header({ modal, toggle }) {
                             </div>
                         </div>
                         <div className="col-6 text-center">
-                            <span className="icon--svg icon--svg mvl-animated-logo" aria-hidden="true"><img src={Mlogo}/></span>
+                            <span className="icon--svg icon--svg mvl-animated-logo" aria-hidden="true"><img src={Mlogo} alt="not-found"/></span>
                         </div>
                         <div className="col text-md-end text-center">
                             <div className='d-lg-flex justify-content-end w-100 d-none d-lg-block'>
@@ -174,10 +174,7 @@ export default function Header({ modal, toggle }) {
                                     <p className='font-size-2 '>SUBSCRIBE</p>
                                 </div>
                             </div>
-                            <img src={search} width={18} height={18} className='d-lg-none ' />
-
-
-
+                            <img src={search} width={18} height={18} className='d-lg-none' alt="not-found" />
                         </div>
                     </div>
                 </div>

@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import courseData from '../data/music_course.json'
 import { BackgroundGradient } from './ui/background-gradient';
-interface Courses {
+  interface Courses {
     id: number;
     title: string
     slug: string
