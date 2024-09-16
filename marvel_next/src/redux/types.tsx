@@ -1,6 +1,8 @@
-"use client"
 
-// src/redux/types.ts
 export const FETCH_API_REQUEST = 'FETCH_API_REQUEST';
 export const FETCH_API_SUCCESS = 'FETCH_API_SUCCESS';
 export const FETCH_API_FAILURE = 'FETCH_API_FAILURE';
+
+export const FETCH_API_REQUEST_ID = 'FETCH_API_REQUEST_ID';
+export const FETCH_API_SUCCESS_ID = 'FETCH_API_SUCCESS_ID';
+export const FETCH_API_FAILURE_ID = 'FETCH_API_FAILURE_ID';

@@ -17,8 +17,6 @@ export const HoverEffect = ({
       extension: string;
     };
     variantDescription: string;
-
-    // link: string; // You can remove this if no longer needed
   }[];
   className?: string;
 }) => {
@@ -31,9 +29,9 @@ export const HoverEffect = ({
         className
       )}
     >
-      {items[0]?.map((item, idx) => (
+      {items?.map((item, idx) => (
         <section
-          key={item.id}
+          key={idx}
           className="relative group block p-2 h-full w-full"
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
@@ -55,12 +53,12 @@ export const HoverEffect = ({
               />
             )}
           </AnimatePresence>
-          {/* <Link href={`/comic/${item?.id}`}> */}
+          <Link href={`/comic/${item?.id}`}>
             <Card thumbnail={item.thumbnail} variantDescription={item.variantDescription}>
               <CardTitle>{item.title}</CardTitle>
               <CardDescription>{item.description}</CardDescription>
             </Card>
-          {/* </Link> */}
+          </Link>
         </section>
       ))}
     </div>

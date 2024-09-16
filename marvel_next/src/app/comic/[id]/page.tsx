@@ -1,55 +1,91 @@
 "use client";
 
 import Image from "next/image";
-import React from "react";
-import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
-import Link from "next/link";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSingleData } from "@/redux/actions/actions";
+import { useRouter } from "next/navigation";
+import { MdArrowLeft } from "react-icons/md";
 
-export default function ThreeDCardDemo() {
-  return (
-    <CardContainer className="inter-var">
-      <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
-        <CardItem
-          translateZ="50"
-          className="text-xl font-bold text-neutral-600 dark:text-white"
-        >
-          Make things float in air
-        </CardItem>
-        <CardItem
-          as="p"
-          translateZ="60"
-          className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
-        >
-          Hover over this card to unleash the power of CSS perspective
-        </CardItem>
-        <CardItem translateZ="100" className="w-full mt-4">
+export default function SinglePage(params) {
+  const data = useSelector((store) => store.fetchSinglePage);
+  const id = params.params.id;
+  const dispatch = useDispatch();
+  const router = useRouter();  // Use router for navigation
+
+  console.log("--data",data)
+  useEffect(() => {
+    dispatch(fetchSingleData(id));
+  }, [dispatch, id]);
+
+  const imageUrl =
+    data?.data?.thumbnail?.path && data?.data?.thumbnail?.extension
+      ? `${data.data?.thumbnail?.path}.${data.data?.thumbnail?.extension}`
+      : "/images/placeholder.png"; // Fallback image
+
+  return Object.values(data?.data)?.length === 0 || data?.data.length === 0 ? (
+    <div className="text-center" style={{ height: "60vh" }}>
+      Loading....
+    </div>
+  ) : (
+    <div className="container m-auto mb-3 mt-4">
+          <button
+            className="flex items-center px-2 mt-8 py-2 text-black backdrop-blur-sm border border-black rounded-md hover:shadow-[0px_0px_4px_4px_rgba(0,0,0,0.1)] bg-white/[0.2] text-sm transition duration-200"
+            onClick={() => router.push("/comic")}
+          > <MdArrowLeft size={30}/>
+            Back To Series
+          </button>
+        
+      <div className=" flex flex-wrap justify-evenly items-center mt-10">
+        
           <Image
-            src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=2560&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            height="1000"
-            width="1000"
-            className="h-60 w-full object-cover rounded-xl group-hover/card:shadow-xl"
+            src={imageUrl.startsWith('http') ? imageUrl : '/images/placeholder.png'}  // Ensure it's an absolute URL
+            width={450}
+            height={450}
+            objectFit="contain"
+            className="  rounded-xl group-hover/card:shadow-xl"
             alt="thumbnail"
           />
-        </CardItem>
-        <div className="flex justify-between items-center mt-20">
-          <CardItem
-            translateZ={20}
-            as={Link}
-            href="https://twitter.com/mannupaaji"
-            target="__blank"
-            className="px-4 py-2 rounded-xl text-xs font-normal dark:text-white"
-          >
-            Try now →
-          </CardItem>
-          <CardItem
-            translateZ={20}
-            as="button"
-            className="px-4 py-2 rounded-xl bg-black dark:bg-white dark:text-black text-white text-xs font-bold"
-          >
-            Sign up
-          </CardItem>
-        </div>
-      </CardBody>
-    </CardContainer>
+      
+       
+          <div className="flex flex-col justify-center items-center gap-5">
+            <h2 className="card-title font-bold mt-3 md:text-xl">{data?.data?.title}</h2>
+            <p className="font-bold ">
+              Creator: {data?.data?.creators?.items[0]?.name}
+            </p>
+            <p className="font-bold ">Series: {data?.data?.series?.name}</p>
+            <p className="card-text">
+              Available Stories: {data?.data?.stories?.available}
+            </p>
+            {data?.data?.stories?.items?.map((e, i) => (
+              <p key={i} className="card-text">
+                {e.name} - Type: {e.type}
+              </p>
+            ))}
+
+            {/* {
+              data?.data?.urls?.map((e,i)=>{
+                return <Image key={i}
+                src={`${e.path}.${e?.extension
+                }`}  // Ensure it's an absolute URL
+                width={100}
+                height={100}
+                objectFit="contain"
+                className="  rounded-xl group-hover/card:shadow-xl"
+                alt="thumbnail"
+              />
+              })
+            } */}
+
+           
+          </div>
+        
+      </div>
+    </div>
   );
+
+  
+
+
+
 }

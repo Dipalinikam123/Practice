@@ -1,47 +1,47 @@
 "use client"
 
-import { fetchComicData } from "@/redux/actions/actions"
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-
+import { fetchComicData, clearComicData } from "@/redux/actions/actions";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 
 export default function Comic() {
+  const [offset, setOffset] = useState<number>(0);
+  const [limit] = useState<number>(8); // Number of items per page
 
-  const [offset, setOffset] = useState(0);
-  const [limit] = useState(8); // Number of items per page
+  const data = useSelector((store: any) => store.fetchApiReducer);
+  const dispatch = useDispatch();
 
-  const data =useSelector((store:any)=>store.fetchApiReducer)
-  console.log("----",data?.data)
-  const dispatch=useDispatch()
-  
-    useEffect(()=>{
-      dispatch(fetchComicData(0,12));
-    },[offset, limit, dispatch])
+  // Clear data and reset offset on mount
+  useEffect(() => {
+    dispatch(clearComicData()); // Clear the data when the component mounts
+    setOffset(0); // Reset offset when component mounts
+  }, [dispatch]);
 
-    const handleScroll = () => {
-      // Check if we are at the bottom of the page
-      if (window.innerHeight + document.documentElement.scrollTop + 1 >= document.documentElement.scrollHeight) {
-  
-        // console.log("----!data.loading ",!data.loading );
-        // console.log("----!data.error ",!data.error );
-        console.log("!data.loading && !data.error", !data.loading && !data.error);
-        if (!data.loading && !data.error) {
-          setOffset(prevOffset => prevOffset + limit);
-        }
+  // Fetch data when offset or limit changes
+  useEffect(() => {
+    dispatch(fetchComicData(offset, limit));
+  }, [offset, limit, dispatch]);
+
+  const handleScroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop + 1 >=
+      document.documentElement.scrollHeight
+    ) {
+      if (!data.loading && !data.error) {
+        setOffset((prevOffset) => prevOffset + limit);
       }
-    };
-  
-    useEffect(() => {
-      // Add scroll event listener
-      window.addEventListener('scroll', handleScroll);
-      // Clean up event listener on component unmount
-      return () => window.removeEventListener('scroll', handleScroll);
-    }, [data.loading, data.error]); // Dependencies to manage listener re-attachment
-    return (
-        <div className="max-w-7xl h-full mx-auto ">
-        <HoverEffect items={data?.data} />
-      </div>
-    )
-  }
-  
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [data.loading, data.error]);
+
+  return (
+    <div className="max-w-7xl h-full mx-auto mb-20">
+      <HoverEffect items={data?.data} />
+    </div>
+  );
+}
