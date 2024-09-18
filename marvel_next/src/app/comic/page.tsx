@@ -42,7 +42,8 @@ export default function Comic() {
 
   return (
     <div className="max-w-7xl h-full mx-auto mb-20">
-      <HoverEffect items={data?.data} />
+     {data?.loading && <p className='text-center text-xl font-bold'>Loading...</p> }
+     <HoverEffect items={data?.data} />
     </div>
   );
 }
