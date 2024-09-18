@@ -12,6 +12,7 @@ export default function Comic() {
   const data = useSelector((store: any) => store.fetchApiReducer);
   const dispatch = useDispatch();
 
+  console.log("----data",data)
   // Clear data and reset offset on mount
   useEffect(() => {
     dispatch(clearComicData()); // Clear the data when the component mounts

@@ -1,0 +1,37 @@
+----------------**** Routing ****-------------------
+  - In next js Routing support file based routing.
+  - folder name defines path name.
+  
+  1. Nested Routing :- login/studentlogin/page.jsx , path - localhost:3000/login/studentlogin
+  2. Route Group - (course)/java/page.jsx, path - localhost:3000/java , [no need to write course]
+  3. Dynamic Route [slug]-  user/[id]/page.jsx - path-user/1,  to get id from path use direct {params}  as a props
+  4. catch all route /  catch all segment:-  blog/[...post]/page.jsx- path- blog/anything/anything/anything like- blog/post/mobile/vivo/part2, 
+         this is  catch all segment add multiple path its work on all, --- to get that segment use {params} as a props it will return array {post:['post','mobile','vivo',;part2']}
+  5. Optional route- blog/[[...post]]/page.jsx , no need to write post in path , you just write /blog still you can access page.jsx page 
+          in Optional route. if you want to write post still this is work.
+  6. Parallel route:- Parallelroute/@left/page.jsx or Parallelroute/@right/page.jsx
+
+--------------------**** Layout ****-------------------
+   You can define a layout by default exporting a React component from a layout.js file. The component should accept a children prop that will be populated with a child layout (if it exists) or a page during rendering.
+              admin/profile/page.jsx & admin/dashboard/page.jsx & admin/layout.js path -/admin,, whatever you write in layout its shows on all admin children.
+
+--------------------**** Linking and Navigation ****-------------------
+
+There are four ways to navigate between routes in Next.js
+  1.Using the <Link> Component.--- use:- <Link href="/login">Login</Link>
+  2.Using the useRouter hook (Client Components) use:- const route=useRouter(), onclick={()=>route.push('/login)}
+  3.Using the redirect function (Server Components) use :-  const flag =true; flag && redirect('/product')
+  4.Using the native History API
+ 
+--------------------**** Server and Cilent component  Rendering ****-------------------
+1 . Server Component:- 
+   -Render On Server Side 
+   -By default all component are server Component
+   - They Are Closer To Backend
+   -So backend related logic and code should write in server components
+
+1 . Client Component:- 
+   -Render On Client Side 
+   -can make client component with 'use client' directive.
+   -all UI-related code amd events should be written here
+
