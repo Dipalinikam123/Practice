@@ -3,9 +3,11 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+// import { Suspense } from "react";
+// import Loading from './loading';
 
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+  src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
@@ -29,11 +31,13 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-          <div className="relative flex w-full justify-center items-center">
-          <Navbar/>
-          </div>
-        {children}
-        <Footer/>
+        <div className="relative flex w-full justify-center items-center">
+          <Navbar />
+        </div>
+        {/* <Suspense fallback={<Loading/>}> */}
+          {children}
+        {/* </Suspense> */}
+        <Footer />
       </body>
     </html>
   );

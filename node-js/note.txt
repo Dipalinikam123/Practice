@@ -1,0 +1,33 @@
+# Core Module=The module we have to import its called as core module,
+like buffer, HTTP, fs , when we want to use them, we need to import them,(const fs= require('fs'))
+# Global Module= like console.log
+# what HTTP module do?
+ => handle server's request and response in node js
+
+ (req,res)=>
+  req => The req object represents the HTTP request made by the client. It contains information about the request.
+   Request Parameters:
+     * req.params: Contains route parameters (e.g., /users/:id would make req.params.id accessible).
+   Query Parameters:
+     * req.query: Contains query string parameters (e.g., /search?term=Node would make req.query.term accessible).
+   Body:
+     * req.body: Contains data sent in the request body (useful for POST and PUT requests). You typically need middleware like body-parser to parse JSON or URL-encoded data.
+   Headers:
+     * req.headers: Contains HTTP headers sent with the request.
+   Method:
+     * req.method: Indicates the HTTP method (GET, POST, etc.) used for the request.
+   URL:
+     * req.url: Contains the URL of the request.
+      res =>The res object represents the HTTP response that the server sends back to the client. It provides methods to send data, set headers, and manage the response status.
+--------------------------------------------------------------------
+res=> The res object represents the HTTP response that the server sends back to the client. It provides methods to send data, set headers, and manage the response status. 
+  Sending a Response:
+    * res.send(): Sends a response of various types (string, object, etc.).
+    * res.json(): Sends a JSON response.
+    * res.sendFile(): Sends a file as a response.
+  Setting Status Codes:
+    * res.status(code): Sets the HTTP status code for the response.
+  Setting Headers:
+    * res.set(headerName, value): Sets a specific HTTP header.
+  Redirecting:
+    * res.redirect(url): Redirects the client to a different URL.

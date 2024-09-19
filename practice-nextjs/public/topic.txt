@@ -35,3 +35,13 @@ There are four ways to navigate between routes in Next.js
    -can make client component with 'use client' directive.
    -all UI-related code amd events should be written here
 
+--------------------**** usePathName, useSearchParams in client componant ****-------------------
+to get path = const pathname=usePathName() , clg(pathname)
+to get search query params in path :- const searchParams=useSearchParams() , clg(searchParams.get('search)) o/p= product1, path shouldlook like this = /cart?search=product1
+or path is like cart?search=product1&randomvalue=abcde , clg(searchParams.get('search), searchParams.get('randomvalue')) 
+
+--------------------**** usePathName, useSearchParams in server componant ****-------------------
+to get path use {params} as a props,
+to get search query params in path :- {searchParams} as a props, its gives dynamic params
+path shouldlook like this = /cart?search=product1
+
