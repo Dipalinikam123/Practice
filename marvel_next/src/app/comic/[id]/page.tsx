@@ -7,8 +7,14 @@ import { fetchSingleData } from "@/redux/actions/actions";
 import { useRouter } from "next/navigation";
 import { MdArrowLeft } from "react-icons/md";
 
-export default function SinglePage(params) {
-  const data = useSelector((store) => store.fetchSinglePage);
+
+interface SinglePageProps {
+  params: {
+    id: number;
+  };
+}
+export default function SinglePage(params:SinglePageProps) {
+  const data = useSelector((store:any) => store.fetchSinglePage);
   const id = params.params.id;
   const dispatch = useDispatch();
   const router = useRouter();  // Use router for navigation
@@ -62,22 +68,6 @@ export default function SinglePage(params) {
                 {e.name} - Type: {e.type}
               </p>
             ))}
-
-            {/* {
-              data?.data?.urls?.map((e,i)=>{
-                return <Image key={i}
-                src={`${e.path}.${e?.extension
-                }`}  // Ensure it's an absolute URL
-                width={100}
-                height={100}
-                objectFit="contain"
-                className="  rounded-xl group-hover/card:shadow-xl"
-                alt="thumbnail"
-              />
-              })
-            } */}
-
-           
           </div>
         
       </div>

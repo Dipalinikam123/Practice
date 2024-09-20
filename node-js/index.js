@@ -5,12 +5,12 @@
 // console.log("hello node")
 
 // Basic Server
-//  const http= require('http')
+ const http= require('http')
 
-//  http.createServer((req,res)=>{
-//     res.write("Hello Node Js")
-//     res.end()
-//  }).listen(4500)
-
+ http.createServer((req,res)=>{
+    res.write("Hello Node Js")
+    res.end()
+ }).listen(4500)
+ 
 // --------------------------------------------------------------
   

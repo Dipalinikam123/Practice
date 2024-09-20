@@ -1,6 +1,10 @@
 # Core Module=The module we have to import its called as core module,
-like buffer, HTTP, fs , when we want to use them, we need to import them,(const fs= require('fs'))
+  like buffer, HTTP, fs , when we want to use them, we need to import them,(const fs= require('fs'))
 # Global Module= like console.log
+
+# what is HTTP?
+ => HTTP, or Hypertext Transfer Protocol, is a protocol used for transferring data over the web. It facilitates communication between web browsers and servers, allowing users to access websites, images, videos, and other content. When you enter a URL in your browser, it sends an HTTP request to the server hosting that content, which then responds with the requested data. HTTP is the foundation of data communication on the internet.
+
 # what HTTP module do?
  => handle server's request and response in node js
 
@@ -20,14 +24,14 @@ like buffer, HTTP, fs , when we want to use them, we need to import them,(const 
      * req.url: Contains the URL of the request.
       res =>The res object represents the HTTP response that the server sends back to the client. It provides methods to send data, set headers, and manage the response status.
 --------------------------------------------------------------------
-res=> The res object represents the HTTP response that the server sends back to the client. It provides methods to send data, set headers, and manage the response status. 
-  Sending a Response:
-    * res.send(): Sends a response of various types (string, object, etc.).
-    * res.json(): Sends a JSON response.
-    * res.sendFile(): Sends a file as a response.
-  Setting Status Codes:
-    * res.status(code): Sets the HTTP status code for the response.
-  Setting Headers:
-    * res.set(headerName, value): Sets a specific HTTP header.
-  Redirecting:
-    * res.redirect(url): Redirects the client to a different URL.
+  res=> The res object represents the HTTP response that the server sends back to the client. It provides methods to send data, set headers, and manage the response status. 
+    Sending a Response:
+       * res.send(): Sends a response of various types (string, object, etc.).
+       * res.json(): Sends a JSON response.
+       * res.sendFile(): Sends a file as a response.
+    Setting Status Codes:
+       * res.status(code): Sets the HTTP status code for the response.
+    Setting Headers:
+       * res.set(headerName, value): Sets a specific HTTP header.
+    Redirecting:
+       * res.redirect(url): Redirects the client to a different URL.

@@ -1,18 +1,26 @@
-"use client"
+"use client";
 
 import { fetchComicData, clearComicData } from "@/redux/actions/actions";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { HoverEffect } from "@/components/ui/card-hover-effect";
 
+interface ComicData {
+  loading: boolean;
+  error: string | null;
+  data: any[]; // Adjust based on your actual data structure
+}
+
 export default function Comic() {
   const [offset, setOffset] = useState<number>(0);
   const [limit] = useState<number>(8); // Number of items per page
 
-  const data = useSelector((store: any) => store.fetchApiReducer);
+  // Use a more specific selector type if available
+  const data = useSelector((store: { fetchApiReducer: ComicData }) => store.fetchApiReducer);
   const dispatch = useDispatch();
 
-  console.log("----data",data)
+  console.log("----data", data);
+
   // Clear data and reset offset on mount
   useEffect(() => {
     dispatch(clearComicData()); // Clear the data when the component mounts
@@ -42,8 +50,8 @@ export default function Comic() {
 
   return (
     <div className="max-w-7xl h-full mx-auto mb-20">
-     {data?.loading && <p className='text-center text-xl font-bold'>Loading...</p> }
-     <HoverEffect items={data?.data} />
+      {data.loading && <p className='text-center text-xl font-bold'>Loading...</p>}
+      <HoverEffect items={data.data} />
     </div>
   );
 }
