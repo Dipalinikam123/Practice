@@ -1,14 +1,21 @@
-# Core Module=The module we have to import its called as core module,
-  like buffer, HTTP, fs , when we want to use them, we need to import them,(const fs= require('fs'))
-# Global Module= like console.log
+# -------what is module ?
+=> In Node.js, a module is a reusable piece of code that encapsulates functionality and can be imported into other files. 
+      Each file is treated as a separate module. You can export functionality from one module and import it into another.Node.js uses the CommonJS module format. 
+    * Exporting: To share functionality from a module, you use module.exports or exports.
+    * Importing: You can import a module using the require() function.
+    * node js support aslo ES6 import export module, for this we need to create package.json file in write {"type":"module"}
 
-# what is HTTP?
+# -------Core Module=The module we have to import its called as core module,
+  like buffer, HTTP, fs , when we want to use them, we need to import them,(const fs= require('fs'))
+# -------Global Module= like console.log
+
+# -------what is HTTP?
  => HTTP, or Hypertext Transfer Protocol, is a protocol used for transferring data over the web. It facilitates communication between web browsers and servers, allowing users to access websites, images, videos, and other content. When you enter a URL in your browser, it sends an HTTP request to the server hosting that content, which then responds with the requested data. HTTP is the foundation of data communication on the internet.
 
-# what HTTP module do?
+# -------what HTTP module do?
  => handle server's request and response in node js
 
- (req,res)=>
+-------(req,res)=>
   req => The req object represents the HTTP request made by the client. It contains information about the request.
    Request Parameters:
      * req.params: Contains route parameters (e.g., /users/:id would make req.params.id accessible).
@@ -24,7 +31,8 @@
      * req.url: Contains the URL of the request.
       res =>The res object represents the HTTP response that the server sends back to the client. It provides methods to send data, set headers, and manage the response status.
 --------------------------------------------------------------------
-  res=> The res object represents the HTTP response that the server sends back to the client. It provides methods to send data, set headers, and manage the response status. 
+-------res=> The res object represents the HTTP response that the server sends back to the client. It provides methods to send data, 
+       set headers, and manage the response status. 
     Sending a Response:
        * res.send(): Sends a response of various types (string, object, etc.).
        * res.json(): Sends a JSON response.
@@ -35,3 +43,47 @@
        * res.set(headerName, value): Sets a specific HTTP header.
     Redirecting:
        * res.redirect(url): Redirects the client to a different URL.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+# ------ File System (fs)-----
+=> This module allows you to perform operations like reading, writing, updating, and deleting files and directories.
+   *fs.readFileSync(note.txt) it's work synchronously
+
+# what is Buffer ?
+=>In Node.js, a Buffer is a built-in object that provides a way to handle binary data directly. Buffers are especially useful for working with streams, files, and network communications where raw binary data is involved.
+
+# Differance between Asynchronous and  Synchronous?
+=>synchronous and synchronous programming are two different paradigms for handling operations, especially in the context of I/O tasks like reading files or making network requests.
+
+----------Synchronous Programming
+  * Execution Order: In synchronous programming, tasks are executed one after the other. Each task must complete before the next one starts.
+  * Blocking: Synchronous operations block the execution thread until the current task is finished. This means the program waits, which can lead to inefficiencies, especially with I/O operations.
+  * Error Handling: Error handling can be straightforward, as each task is executed in sequence.
+
+----------Asynchronous Programming
+  * Execution Order: In asynchronous programming, tasks can be initiated without waiting for previous tasks to complete. Multiple tasks can be in progress simultaneously.
+  * Non-blocking: Asynchronous operations do not block the execution thread. When an async operation is called, the program can continue executing the next lines of code while waiting for the async operation to complete.
+  * Error Handling: Error handling can be more complex, often requiring callbacks, promises, or async/await syntax.
+
+----------------------------------------------------------------------------------------------------------------------------
+---- 1st step => npm init
+---- 2nd step => install nodemon --save-dev and after this to run nodemon you have to write in package.json file in "scripts":"nodemon index.js" and run command npm run start
+
+--------------------------------------------------
+        req            req
+client  ==> web server ==> DataBase server
+        res          res 
+client <== web server <== DataBase server
+
+req and res is send and get in http format to understand web server(node js)
+
+  1.when client send request to server ,,=>  so which type of request is look like => request line =>post/login,(post, get, put, delete,path) , headers , body (data)
+  2. when server responds to client ,,=> status line=> 200 'ok' , headers, body 
+
+---------------------response status---------------------------------
+
+2xx(success) = 200:ok , 201:created, 202:accepted
+3xx(redirections) = 301:moved permanently, 302:Found
+4xx(client error) = 400:bad request, 401:unauthorised , 403;forbidden, 404:not found, 405:method not allowed
+5xx(server error) = 500:internal server error , 502:bad gateway

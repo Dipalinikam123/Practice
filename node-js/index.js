@@ -1,16 +1,7 @@
-// const app = require('./app')
+   const express = require('express')
 
-// console.log(app.x,app.y)
+   const server= express();
 
-// console.log("hello node")
-
-// Basic Server
- const http= require('http')
-
- http.createServer((req,res)=>{
-    res.write("Hello Node Js")
-    res.end()
- }).listen(4500)
- 
-// --------------------------------------------------------------
-  
+   server.listen(4000,()=>{
+    console.log("Server Started...")
+   })
