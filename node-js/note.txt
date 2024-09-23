@@ -87,3 +87,6 @@ req and res is send and get in http format to understand web server(node js)
 3xx(redirections) = 301:moved permanently, 302:Found
 4xx(client error) = 400:bad request, 401:unauthorised , 403;forbidden, 404:not found, 405:method not allowed
 5xx(server error) = 500:internal server error , 502:bad gateway
+
+-----------------------------------------Express------------------------------------------------------------------------
+it is a web application framework built on top of Node.js. It provides tools and features that help you create a web server and handle HTTP requests and responses easily.
