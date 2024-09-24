@@ -1,3 +1,11 @@
+1. why we node . sql and mongo db
+event driven 
+
+#------ what is node js?
+=> Node is neither a language or framework.
+   node /node.js a runtime environment for executing javascript code on the server side.
+
+
 # -------what is module ?
 => In Node.js, a module is a reusable piece of code that encapsulates functionality and can be imported into other files. 
       Each file is treated as a separate module. You can export functionality from one module and import it into another.Node.js uses the CommonJS module format. 
@@ -90,3 +98,14 @@ req and res is send and get in http format to understand web server(node js)
 
 -----------------------------------------Express------------------------------------------------------------------------
 it is a web application framework built on top of Node.js. It provides tools and features that help you create a web server and handle HTTP requests and responses easily.
+
+------- # what .listen method do in node or express
+=>The .listen method starts a server and makes it ready to accept requests on a chosen port.
+
+------- # what is endpoint
+=> *Each endpoint is tied to a specific HTTP method (GET, POST, PUT, DELETE, etc.).
+   *Endpoints are defined using route paths (e.g., /, /submit, /update/:id).
+   *Each endpoint has a callback function that handles the request and sends a response back to
+
+------ # what is Middleware
+=>Middleware is a function that runs during an HTTP request before it reaches the final handler.. It processes or modifies the request, performs tasks like logging or authentication, and can either pass control to the next function or send a response back to the client.
