@@ -1,9 +1,190 @@
 1. why we node . sql and mongo db
 event driven 
 
-#------ what is node js?
-=> Node is neither a language or framework.
-   node /node.js a runtime environment for executing javascript code on the server side.
+#------ ------ what is node js---------------?
+=> Node is not a language or framework.
+  * node /node.js a runtime environment for executing javascript code on the server side.
+  * Runtime Environment = A runtime environment refers to the software infrastructure that help to execution a program.it also translate a high-level-language to machine code.
+
+#------ ----- How node is runtime environment on server side? what is v8-------------------------?
+=> how javascript code work in client side or browser?.. with the help of v8 is javascript engine for chrome browser , v8 engine execute our code end display in browser.
+  * then how node js made and run ?
+=> node js is combination of v8 engine or C++ , to execute javascript code outside the browser
+node js is similar to browser only difference is browser run javascript code in client side and nodejs execute javascript on the server.  
+
+# ----------- what is the difference between Runtime environment & Framework------------- ?
+ * Runtime Environment (node js):- primarily focuses on providing the necessary infrastructure for code execution, including services like memory management and i/o operation.
+ * Framework (Express is framework): primarily focuses on simplifying the development process by offering a structured set of tools, libraries, and best practice
+
+# ----------- difference between client side or server side -------------
+                             * client side (browser)              Server side (node js./ server)
+  Environment location  :-   Runs on the user's web browser.        Runs on the server.
+  Primary Language      :-   HTML, CSS, javascript,                 Javascript.
+  Document/Windows/     :-   Yes                                     NO
+  Navigator/Event Object 
+  Req/Res/Server/DB Object :- No                                     Yes
+  Responsibilities       :- Handle UI display, interaction and       Handle business logic, data storage/ access, authentication,authorization
+                                client side logic
+
+#----------------- 7 main feature of node js ---------------------
+1. single threaded 2. Asynchronous 3. Event-Driven 4.v8 javascript engine 5.cross platform 6.NPM 7. Real-time capabilities (like chats)
+
+#----------------- what is single threaded programming--------------?
+=> a program's code is executed line after line and there can't be two lines of a program running at the same time.
+
+#----------------- what is synchronous programming---------------?
+=> Synchronous means 'wait for me to finish before doing something else.
+
+#----------------- what is Asynchronous programming---------------?
+  In node js, asynchronous flow can be achieved by its single threaded, non blocking, and event-driven architecture
+=> In Node js, if there are 4 tasks (Task1,Task2,Task3,Task4) to be completed for an event. then below steps will be executed.
+   1. First, thread will be created.
+   2. Thread T1 initiates Task1, but it won't wait for Task1 to complete. instead, T1 proceeds to initiate Task2, then Task3 and Task4 (This asynchronous execution allows T1 to efficiently handle multiple task concurrently).
+   3. Whenever Task1 completes, an event is emitted.
+   4.Thread T1, being event-driven, promptly responds to this event, interrupting its current task and delivering the result of Task1.
+
+#--------- What are Event, Event Emitter, Event Queue, Event Loop & Event Driven?--------- 
+ * Event: A notification or signal that something has happened in the system (e.g., user actions, timers)..
+ * Event Emitter: Create or emit event 
+ * Event Handler : An event handler is a function or callback that is executed in response to a specific event, such as a click, 
+    input, or timer  event, when that event occurs.
+ * Event Queue: all the generated events store in queue in node. which event generate first that store first like: |E3|,|E2|,|E1| after this .
+ * Event Loop : node libraries pick event in FIFA order of the queue and execute them in the order they were added. ex;-event loop  pick E1 
+    event and perform code on E1 it's called as Event handler, event handler is function, also called as event listener, after completing this node library pick E2 and same event handler perform code on E2 , after this E3, E4 it's called as  Event loop.
+ * Event Driven architecture:- it means operations in node are drive or based by events. 
+   ---- ** node js architecture:= client req =>stored in event queue => event loop pick first req (event loop always watch on queue) => process => return response to client  
+
+#------------- Feature And Advantages of node js--------------------
+
+  *Feature                           *Advantages
+1. Asynchronous                    Enable Handling multiple concurrent request & non-blocking execution of thread 
+2. v8 Engine                       Built on the v8 js engine from google chrome, node js executes code fast.
+3. Event-driven architecture       efficient handling event. Great for real time application like chat application, gaming application
+                                   (using web  socket) where bidirectional communication is required.
+4. cross-platform                  support deployment in various operating systems, enhancing flexibility.
+5. javascript                      coding in js language therefor no need to learn a new language.
+                                  Suitable for building scalable application that can handle increase loads.
+
+#-------------what is module---------------
+=> * A module contains a specific functionality that can be easily reused within a node js application.
+   * ideally  in node.js file can be treated as a module.  
+     ex:- function sayHello(){
+              console.log("hello")
+          }
+    module.exports= sayHello;  
+           or 
+    export.sayHello= function(){console.log("hello")}  (no need to separate export module)
+
+   ----*** if we have multiple function to export then we need to export like this = module.exports.sayHello=sayHello
+  
+----------* Types of Module *------------
+  3 types of module in node js
+1. built-in module = already present modules in node js like- http, fs etc
+2. local module = local module that we as a developer create in our project 
+3. third-party module = external packages or library,, to use them we need to install in our project
+
+------------------ Top 5 Built in modules ------------------
+1.fs , 2.path , 3.os , 4.events, 5.http
+
+#---------Explain the role of fs module? name some function of it?
+  File System:- fs(file system) module in node provides a set of methods for interacting with the file system.
+ => fs module is used for managing files. 
+  const fs= require('fs')
+  * fs.readFile("data.txt","utf-8",(err,data)=>{ console.log(data) }) //  reading file content asynchronously
+  * fs.writeFile("data.txt","hello node","utf-8",(err)=>{ console.log("write operation complete") }) //  reading file content asynchronously
+  * fs.appendFile() is used to add (append) data to an existing file. If the file doesn't exist, it creates a new file and writes the data to it. 
+  * fs.unlink() :- delete the specific file
+  * fs.readdir():- read the contents of a directory.
+  * fs.mkdir() :- create new directory. 
+  * fs.rmdir() :- removes the specific directory.
+#---------Explain the role of path module ? name some function of it?
+    const path = require('path');
+  * Joins multiple path segments into one, handling any necessary separators.
+    const newPath = path.join('/home', 'user', 'docs', 'file.txt');
+    console.log(newPath); // Output: /home/user/docs/file.txt
+  * path.parse():
+    Returns an object with information about the different parts of the path (root, dir, base, ext, name).
+    const parsedPath = path.parse('/home/user/docs/file.txt');
+    console.log(parsedPath);
+    Output:  {  root: '/', dir: '/home/user/docs', base: 'file.txt', ext: '.txt', name: 'file' }
+    etc....
+#---------Explain the role of os module ? name some function of it?
+=>  The os module in node.js provides a set of methods for interacting with operating system
+const os = require('os');
+console.log(os.type());  // platform information
+console.log(os.userInfo());  // get current user information ,,, etc
+
+#---------Explain the role of event module ? How to handle events in node ?
+ => * Event module is used to handle events.
+    * EventEmitter class of events module is used to register event listeners and emit event
+    * An event listener is a function that will be executed when a particular event occurs. 
+    * on() method is used to register event listener
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # -------what is module ?
@@ -11,7 +192,7 @@ event driven
       Each file is treated as a separate module. You can export functionality from one module and import it into another.Node.js uses the CommonJS module format. 
     * Exporting: To share functionality from a module, you use module.exports or exports.
     * Importing: You can import a module using the require() function.
-    * node js support aslo ES6 import export module, for this we need to create package.json file in write {"type":"module"}
+    * node js support also ES6 import export module, for this we need to create package.json file in write {"type":"module"}
 
 # -------Core Module=The module we have to import its called as core module,
   like buffer, HTTP, fs , when we want to use them, we need to import them,(const fs= require('fs'))
