@@ -120,59 +120,18 @@ console.log(os.userInfo());  // get current user information ,,, etc
     * An event listener is a function that will be executed when a particular event occurs. 
     * on() method is used to register event listener
 
+#------------- what is event argument---------------------
+=> event argument refer to the additional information or data that can be passed along with an emitted event
+ 
+#------------- what is the difference between a function and event---------------------
+* Function => function is a reusable block of code that perform a specific task when invoked or called
+* event =>  event represent action that can be observed and responded to. Event will call function internally.
 
+#------------What is the role of  http module in node ?--------------
+=> The HTTP module can create an HTTP server that listen to server port and give a specific response to client.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#------------What is the role of createServer() module of http module ?--------------
+=> The createServer() method of http module in node js , is used to create an HTTP server 
 
 
 

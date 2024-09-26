@@ -62,11 +62,11 @@ const auth2 = (req, res, next) => {
 
 
 // test this on postman because all have same route
-// this is called as Api- endpoint- route
+// this is called as Api- endpoint- route ex= /user, /product
 server.get('/', auth, (req, res) => { // apply on single route
    res.json({ type: 'GET' })
 })
-server.get('/product/:id', (req, res) => { // apply on single route
+server.get('/product/:id', (req, res) => {
    console.log("---id", req.params)
    res.json({ type: 'GET' })
 })
