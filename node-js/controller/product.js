@@ -1,17 +1,20 @@
 const fs = require('fs')
-
 const data = JSON.parse(fs.readFileSync('./public/data.json'))
 const products = data.products;
 
-
+// Create POST / products
 exports.createProduct=(req, res) => {
     console.log('---body', req.body)
     products.push(req.body)
     res.json(req.body)
 }
+
+//Read api => GET / product 
 exports.getProduct=(req, res) => {
     res.json(products)
 }
+
+//Read api => GET / product/:id  for single product
 exports.getSingleProduct=(req, res) => {
     const id = +req.params.id
     console.log(id)
@@ -19,6 +22,8 @@ exports.getSingleProduct=(req, res) => {
     const product = products.find(e => e?.id === id)
     res.json(product)
 }
+
+//update api => PUT / product/:id  => replace object data to updated object data
 exports.putProduct=(req, res) => {
     const id = +req.params.id
     const product = products.findIndex(e => e?.id === id)
@@ -26,6 +31,8 @@ exports.putProduct=(req, res) => {
     products[product] = { ...req.body, id: id }
     res.status(201).json("updated")
 }
+
+//update api => PATCH / product/:id  => only modify provided data 
 exports.patchProduct=(req, res) => {
     const id = +req.params.id
     const productIndex = products.findIndex(e => e?.id === id)
@@ -35,6 +42,7 @@ exports.patchProduct=(req, res) => {
 
     res.status(201).json("updated..")
 }
+
 exports.deleteProduct=(req, res) => {
     const id = +req.params.id
     const product = products.findIndex(e => e?.id === id)
