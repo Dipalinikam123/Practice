@@ -249,3 +249,9 @@ it is a web application framework built on top of Node.js. It provides tools and
 
 ------ # what is Middleware
 =>Middleware is a function that runs during an HTTP request before it reaches the final handler.. It processes or modifies the request, performs tasks like logging or authentication, and can either pass control to the next function or send a response back to the client.
+
+------------------Mongo DB------------------
+ DB Server =>DataBase => collection => Documents
+ DB Server => university => student / teacher/ courses => Documents
+
+ installation step => https://www.mongodb.com/=> product=> community edition =>download
