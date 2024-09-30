@@ -1,23 +1,31 @@
 const express = require('express');
 const productRoutes = require('./routes/productRoutes')
+const cors= require('cors')
 const mongoose = require('mongoose');
+require('dotenv').config();
 
-
+const PORT = process.env.PORT || 3000; // Use the PORT variable from .env
 const server = express(); //define only one time at root file
 // server.use is used to apply middleware
 
-main().catch(err => console.log(err));
+// body parser
+server.use(cors())
+server.use(express.json()); // These middleware functions allow you to access data from the request body in a readable format.
+server.use('/products', productRoutes.routes) // after this api url is like this= http://localhost:4001/products,  --- you can add multile route like /api/v1/
 
+const dbUrl = process.env.DATABASE_URL
+main().catch(err => console.log(err));
 async function main() {
-  await mongoose.connect('mongodb://127.0.0.1:27017/ecommerce2');
-  console.log("DataBase Connected...")
-  // use `await mongoose.connect('mongodb://user:password@127.0.0.1:27017/test');` if your database has auth enabled
+  try {
+    await mongoose.connect(dbUrl);
+    console.log("Database Connected...");
+  } catch (error) {
+    console.error("Database connection error:", error);
+  }
 }
 
 
-server.use('/products',productRoutes.routes) // after this api url is like this= http://localhost:4001/products,  --- you can add multile route like /api/v1/
 
-server.use(express.json()); // These middleware functions allow you to access data from the request body in a readable format.
 
 
 // api root or base url = http://localhost:4001 
@@ -46,6 +54,6 @@ server.use(express.json()); // These middleware functions allow you to access da
 // flow= User Action  → 2. Route Match → 3. Controller Action → 4. Model Interaction → 5. Data Processing → 6. View Rendering → 7. Response Sent → 8. User Interaction Again
 
 
-server.listen(4001, () => {
-    console.log('server started...')
+server.listen(PORT, () => {
+  console.log('server started...')
 })
