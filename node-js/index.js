@@ -1,17 +1,41 @@
 const express = require('express');
 const productRoutes = require('./routes/productRoutes')
-const cors= require('cors')
+const userRoutes = require('./routes/userRoutes')
+const authRoutes = require('./routes/authRoute')
+const cors = require('cors')
 const mongoose = require('mongoose');
+const jwt = require('jsonwebtoken')
 require('dotenv').config();
+const fs= require('fs')
+const publicKey= fs.readFileSync('E:/ReactPractice/Practice/node-js/public.key')
+
 
 const PORT = process.env.PORT || 3000; // Use the PORT variable from .env
 const server = express(); //define only one time at root file
 // server.use is used to apply middleware
 
+const auth=((req, res, next) => {
+  //to get header info in req  
+  // console.log("---header--", header)
+  try {
+    const token = req.get('Authorization').split('Bearer ')[1]
+    const decoded = jwt.verify(token,publicKey);
+    console.log("--decode-", decoded)
+    if (decoded.email) {
+      next()
+    } else {
+      res.sendStatus(401)
+    }
+  } catch (error) {
+    res.sendStatus(401)
+  }
+})
 // body parser
-server.use(cors())
 server.use(express.json()); // These middleware functions allow you to access data from the request body in a readable format.
-server.use('/products', productRoutes.routes) // after this api url is like this= http://localhost:4001/products,  --- you can add multile route like /api/v1/
+server.use(cors())
+server.use('/auth',authRoutes.routes)
+server.use('/products',auth,productRoutes.routes) // after this api url is like this= http://localhost:4001/products,  --- you can add multile route like /api/v1/
+server.use('/users',auth,userRoutes.routes)
 
 const dbUrl = process.env.DATABASE_URL
 main().catch(err => console.log(err));
