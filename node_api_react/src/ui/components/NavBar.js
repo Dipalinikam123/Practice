@@ -8,33 +8,20 @@ import {
     NavbarToggler,
     NavbarBrand,
     Nav,
-    NavbarText,
 } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
-export default function NavBar({ args }) {
-    const [regModal, setRegModal] = useState(false);
-    const [logModal, setLogModal] = useState(false);
-    // const [user, setUser] = useState([]);
+export default function NavBar({ args,logModal,regModal,toggleLogModal,toggleRegModal,updateProfile,isEditing,updateUser}) {
+   
 
     const [isOpen, setIsOpen] = useState(false);
 
     const toggle = () => setIsOpen(!isOpen);
 
 
-    const toggleRegModal = () => {
-        setRegModal(!regModal);
-        if (logModal) setLogModal(false); // Close login modal if it's open
-    };
-
-    const toggleLogModal = () => {
-        setLogModal(!logModal);
-        if (regModal) setRegModal(false); // Close register modal if it's open
-    };
-
 
     return (
         <div>
-            <Register modal={regModal} toggle={toggleRegModal} logToggle={toggleLogModal} />
+            <Register modal={regModal} toggle={toggleRegModal} logToggle={toggleLogModal} updateProfile={updateProfile} isEditing={isEditing} updateUser={updateUser}/>
             <Login modal={logModal} toggle={toggleLogModal} regToggle={toggleRegModal} />
 
 

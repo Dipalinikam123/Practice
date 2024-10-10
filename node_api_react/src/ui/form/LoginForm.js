@@ -1,8 +1,8 @@
 import axios from 'axios';
 import React, { useState } from 'react'
-import { Button, Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap'
+import { Button, Form, FormGroup, Input, Label } from 'reactstrap'
 
-export default function LoginForm() {
+export default function LoginForm({toggle}) {
     const [loginData, setLoginData] = useState({
         email: '',
         password: '',
@@ -21,6 +21,11 @@ export default function LoginForm() {
         }).then((res) => {
             console.log("--res", res)
             localStorage.setItem("token", JSON.stringify(res?.data?.token))
+            setLoginData({
+                email: '',
+                password: '',
+            })
+            toggle()
         }).catch((err) => {
             console.log("----errr", err)
                 alert(err.response.data.message )
